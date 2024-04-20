@@ -2,17 +2,39 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
-Route::get('/about-us', [\App\Http\Controllers\MainController::class, 'aboutUs']);
-Route::get('/catalog', [\App\Http\Controllers\MainController::class, 'catalog']);
-Route::get('/little-forms', [\App\Http\Controllers\MainController::class, 'littleForms']);
-Route::get('/our-objects', [\App\Http\Controllers\MainController::class, 'ourObjects']);
-Route::get('/credits', [\App\Http\Controllers\MainController::class, 'credits']);
-Route::get('/invest', [\App\Http\Controllers\MainController::class, 'invest']);
-Route::get('/services', [\App\Http\Controllers\MainController::class, 'services']);
+Route::get('/admin', \App\Http\Controllers\Admin\AdminIndexController::class)->name('admin.main.index');
 
+Route::group(['prefix' => '/admin/categories'], function () {
+   Route::get('/', \App\Http\Controllers\Category\IndexController::class)->name('category.index');
+   Route::get('/create', \App\Http\Controllers\Category\CreateController::class)->name('category.create');
+   Route::post('/', \App\Http\Controllers\Category\StoreController::class)->name('category.store');
+   Route::get('/{category}/edit', \App\Http\Controllers\Category\EditController::class)->name('category.edit');
+   Route::get('/{category}', \App\Http\Controllers\Category\ShowController::class)->name('category.show');
+   Route::patch('/{category}', \App\Http\Controllers\Category\UpdateController::class)->name('category.update');
+   Route::delete('/{category}', \App\Http\Controllers\Category\DeleteController::class)->name('category.delete');
+});
 
+Route::group(['prefix' => '/admin/addService'], function () {
+    Route::get('/', \App\Http\Controllers\AddService\IndexController::class)->name('addService.index');
+    Route::get('/create', \App\Http\Controllers\AddService\CreateController::class)->name('addService.create');
+    Route::post('/', \App\Http\Controllers\AddService\StoreController::class)->name('addService.store');
+    Route::get('/{addService}/edit', \App\Http\Controllers\AddService\EditController::class)->name('addService.edit');
+    Route::get('/{addService}', \App\Http\Controllers\AddService\ShowController::class)->name('addService.show');
+    Route::patch('/{addService}', \App\Http\Controllers\AddService\UpdateController::class)->name('addService.update');
+    Route::delete('/{addService}', \App\Http\Controllers\AddService\DeleteController::class)->name('addService.delete');
+});
 
-Route::get('/admin-panel', [\App\Http\Controllers\AdminControllers::class, 'adminPanel']);
-Route::get('/admin-panel/houses', [\App\Http\Controllers\AdminControllers::class, 'adminPanelHouses']);
-Route::get('/admin-panel/serves', [\App\Http\Controllers\AdminControllers::class, 'adminPanelServes']);
+Route::group(['prefix' => '/admin/houses'], function () {
+    Route::get('/', \App\Http\Controllers\House\IndexController::class)->name('house.index');
+    Route::get('/create', \App\Http\Controllers\House\CreateController::class)->name('house.create');
+    Route::post('/', \App\Http\Controllers\House\StoreController::class)->name('house.store');
+    Route::get('/{house}/edit', \App\Http\Controllers\House\EditController::class)->name('house.edit');
+    Route::get('/{house}', \App\Http\Controllers\House\ShowController::class)->name('house.show');
+    Route::patch('/{house}', \App\Http\Controllers\House\UpdateController::class)->name('house.update');
+    Route::delete('/{house}', \App\Http\Controllers\House\DeleteController::class)->name('house.delete');
+});
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
