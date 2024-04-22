@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Главная</li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.main.index') }}">Главная</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -22,8 +22,8 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <form action="{{ route('house.update', $house->id) }}" method="post">
+            <div>
+                <form action="{{ route('house.update', $house->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
                     <div class="form-group">
@@ -33,7 +33,7 @@
                         <input type="text" value="{{ $house->description }}" name="description" class="form-control" placeholder="Описание">
                     </div>
                     <div class="form-group">
-                        <textarea name="content" value="{{ $house->content }}" class="form-control" cols="30" rows="10" placeholder="Контент"></textarea>
+                        <input type="text" name="content" value="{{ $house->content }}" class="form-control" placeholder="Контент">
                     </div>
                     <div class="form-group">
                         <input type="text" value="{{ $house->main_price }}" name="main_price" class="form-control" placeholder="Основная цена">
@@ -42,7 +42,7 @@
                         <input type="text" value="{{ $house->add_price }}" name="add_price" class="form-control" placeholder="Цена с комуникациями">
                     </div>
                     <div class="form-group">
-                        <select class="addServices" name="addServices[]" multiple="multiple" data-placeholder="Выберете дополнительные услуги" style="width: 100%;">
+                        <select class="add_services_ids" name="add_services_ids[]" multiple="multiple" data-placeholder="Выберете дополнительные услуги" style="width: 100%;">
                             @foreach($addServices as $addService)
                                 <option value="{{ $addService->id }}">{{ $addService->title }}</option>
                             @endforeach
@@ -62,12 +62,13 @@
                                 <input name="preview_image" type="file" class="custom-file-input" id="exampleInputFile">
                                 <label class="custom-file-label" for="exampleInputFile">Выберете файл</label>
                             </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text">Загрузка</span>
-                            </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Редактировать">
+                    </div>
                 </form>
+                <img src="{{ asset('storage/' . $house->preview_image) }}" alt="Картинка" width="100%">
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

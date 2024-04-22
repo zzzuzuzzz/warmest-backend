@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Главная</li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.main.index') }}">Главная</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -22,7 +22,7 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <div class="row">
+            <div>
                 <form action="{{ route('category.store') }}" method="post">
                     @csrf
 

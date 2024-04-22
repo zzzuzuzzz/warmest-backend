@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Главная</li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.main.index') }}">Главная</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -22,7 +22,7 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <div class="row">
+            <div>
                 <form action="{{ route('house.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
@@ -33,7 +33,7 @@
                         <input type="text" name="description" class="form-control" placeholder="Описание">
                     </div>
                     <div class="form-group">
-                        <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Контент"></textarea>
+                        <input type="text" name="content" class="form-control" placeholder="Контент">
                     </div>
                     <div class="form-group">
                         <input type="text" name="main_price" class="form-control" placeholder="Основная цена">
@@ -42,7 +42,7 @@
                         <input type="text" name="add_price" class="form-control" placeholder="Цена с комуникациями">
                     </div>
                     <div class="form-group">
-                        <select class="addServices" name="addServices[]" multiple="multiple" data-placeholder="Выберете дополнительные услуги" style="width: 100%;">
+                        <select class="add_services_ids" name="add_services_ids[]" multiple="multiple" data-placeholder="Выберете дополнительные услуги" style="width: 100%;">
                             @foreach($addServices as $addService)
                                 <option value="{{ $addService->id }}">{{ $addService->title }}</option>
                             @endforeach

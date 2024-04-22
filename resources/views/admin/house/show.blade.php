@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Главная</li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.main.index') }}">Главная</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -29,11 +29,20 @@
                             <div class="mr-3">
                                 <a href="{{ route('house.edit', $house->id) }}" class="btn btn-primary">Редактировать</a>
                             </div>
-                            <form action="{{ route('house.delete', $house->id) }}" method="post">
+                            <form action="{{ route('house.delete', $house->id) }}" method="post" class="mr-3">
                                 @csrf
                                 @method('delete')
                                 <input type="submit" class="btn btn-danger" value="Удалить">
                             </form>
+                            @if($house->is_published)
+                                <div class="mr-3">
+                                    <a href="{{ route('house.publish', $house->id) }}" class="btn btn-primary">Снять с публикации</a>
+                                </div>
+                            @else
+                                <div class="mr-3">
+                                    <a href="{{ route('house.publish', $house->id) }}" class="btn btn-primary">Опубликовать</a>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="card-body table-responsive p-0">
@@ -67,9 +76,22 @@
                                         <td>Статус проекта</td>
                                         <td>{{ $house->is_published ? 'Опубликовано' : 'Не опубликовано'}}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Категория проекта</td>
+                                        <td>{{ $category->title }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Дополнительные услуги</td>
+                                        <td>
+                                            @foreach($addServicesList as $addService)
+                                                <p>{{ $addService }}</p>
+                                            @endforeach
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
+                        <img src="{{ asset('storage/' . $house->preview_image) }}" alt="Картинка" width="100%">
                     </div>
                 </div>
             </div>

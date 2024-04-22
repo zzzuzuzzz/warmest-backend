@@ -4,7 +4,6 @@ namespace App\Http\Controllers\House;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Houses\StoreRequest;
-use App\Models\AddServiceHouse;
 use App\Models\House;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,19 +15,16 @@ class StoreController extends Controller
 
         $date['preview_image'] = Storage::disk('public')->put('/images', $date['preview_image']);
 
-        $addServiceIds = $date['addServices'];
-        unset($date['addServices']);
-
-        $house = House::firstOrCreate([
+        $addServiceIds = $date['add_services_ids'];
+        $addServiceList = '';
+        foreach ($addServiceIds as $addServiceId) {
+            $addServiceList = $addServiceList . $addServiceId . ';';
+        }
+        $date['add_services_ids'] = $addServiceList;
+        House::firstOrCreate([
             'title' => $date['title']
         ], $date);
 
-        foreach ($addServiceIds as $addServiceId) {
-            AddServiceHouse::firstOrCreate([
-                'house_id' => $house->id,
-                'add_service_id' => $addServiceId
-            ]);
-        }
         return redirect()->route('house.index');
     }
 }

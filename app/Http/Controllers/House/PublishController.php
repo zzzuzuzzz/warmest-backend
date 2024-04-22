@@ -8,9 +8,20 @@ use App\Models\Category;
 use App\Models\House;
 use Illuminate\Http\Request;
 
-class ShowController extends Controller
+
+class PublishController extends Controller
 {
     public function __invoke(House $house) {
+
+        if ($house->is_published) {
+            $house->update([
+                'is_published' => 0
+            ]);
+        } else {
+            $house->update([
+                'is_published' => 1
+            ]);
+        }
 
         $category = Category::find($house->category_id);
         $addServicesList = [];
@@ -23,8 +34,6 @@ class ShowController extends Controller
         } else {
             $addServicesList = ['Дополнительные услуги не выбраны'];
         }
-
-
 
         return view('admin.house.show', compact('house', 'category', 'addServicesList'));
     }

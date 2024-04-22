@@ -21,6 +21,7 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        dd('123');
         return [
             'title' => 'required|string',
             'description' => 'required',
@@ -30,7 +31,7 @@ class UpdateRequest extends FormRequest
             'add_price' => 'required',
             'is_published' => 'nullable',
             'category_id' => 'nullable',
-            'addServices' => 'nullable|array'
+            'add_services_ids' => 'nullable|array'
         ];
     }
 }

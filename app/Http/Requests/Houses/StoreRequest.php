@@ -30,7 +30,7 @@ class StoreRequest extends FormRequest
             'add_price' => 'required',
             'is_published' => 'nullable',
             'category_id' => 'nullable',
-            'addServices' => 'nullable|array'
+            'add_services_ids' => 'nullable|array'
         ];
     }
 }

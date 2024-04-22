@@ -208,7 +208,7 @@
 <script src="{{ asset('adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
 <script>
     //Initialize Select2 Elements
-    $('.addServices').select2()
+    $('.add_services_ids').select2()
 </script>
 </body>
 </html>

@@ -23,11 +23,8 @@ return new class extends Migration
             $table->integer('add_price');
             $table->boolean('is_published')->default(0);
 
-//            $table->foreignId('user_id')->nullable()->index()->constrained('users');  вишнлист пользователей
             $table->foreignId('category_id')->nullable()->index()->constrained('categories');
-
-
-
+            $table->string('add_services_ids');
         });
     }
 
