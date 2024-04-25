@@ -1,0 +1,76 @@
+  .prices-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .params-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-right: solid 1px var(--bs-body-color);
+  }
+
+  .current-price-with-comm {
+    font-size: var(--warmest-small-font-size);
+    font-weight: 300;
+  }
+
+  .option-container {
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+    align-items: center;
+  }
+
+  .value {
+    display: flex;
+    gap: 5px;
+  }
+
+  .ico {
+    display: flex;
+    color: var(--warmest-orange)
+  }
+
+  .products-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(var(--warmest-card-max-width), 1fr));
+    gap: 30px;
+  }
+
+  .warmest-info-container {
+    display: flex;
+    padding: 10px;
+  }
+
+  .warmest-card {
+    border: solid 2px var(--bs-body-color);
+    border-radius: 5px;
+    min-width: 0;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    font-size: var(--warmest-medium-font-size);
+    color: var(--bs-body-color);
+  }
+
+  .warmest-card-header {
+    display: flex;
+    padding: 10px;
+    color: var(--warmest-orange);
+    justify-content: space-between;
+    gap: 10px
+  }
+
+  .like-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .favorite {
+    height: 100%;
+  }
