@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Dashboard</title>
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2/css/select2.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
@@ -159,6 +160,12 @@
                             <p>Дополнительные услуги</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('administration.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Администраторы</p>
+                        </a>
+                    </li>
 {{--                    <li class="nav-item">--}}
 {{--                        <a href="pages/gallery.html" class="nav-link">--}}
 {{--                            <i class="nav-icon fas fa-users"></i>--}}
@@ -177,9 +184,15 @@
         @yield('content')
     </div>
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2014-{{ now()->year }} <a href="{{ route('admin.main.index') }}">Warmest</a>.</strong>
-        Все права защищены.
+    <footer class="main-footer d-flex justify-content-between">
+        <div>
+            <strong>Copyright &copy; 2014-{{ now()->year }} <a href="{{ route('admin.main.index') }}">Warmest</a>.</strong>
+            Все права защищены.
+        </div>
+        <form action="{{ route('admin.logout') }}" method="post">
+            @csrf
+            <input type="submit" value="Выйти" class="btn btn-outline-primary">
+        </form>
     </footer>
 
     <!-- Control Sidebar -->

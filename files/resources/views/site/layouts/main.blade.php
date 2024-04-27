@@ -118,11 +118,50 @@
     .active {
         fill: var(--warmest-orange);
     }
+
+    .roboto-slab {
+        font-family: "Roboto Slab", serif;
+    }
+
+    .photoSwiper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .active {
+        fill: var(--warmest-orange);
+    }
+    .button-container {
+        padding: 10px;
+    }
+    .warmest-btn {
+        display: inline-block;
+        background-color: var(--warmest-orange);
+        border: 2px solid #ffffff00;
+        padding: 5px 0px;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .warmest-btn:hover {
+        background-color: var(--warmest-dark-orange);
+        transition: all 200ms;
+    }
+
+    .warmest-btn:active {
+        border: 2px solid var(--bs-dark);
+        transition: all 200ms;
+    }
 </style>
 
 <script type="module" defer>
     import servicesData from '{{ asset('assets/js/servicesData.js') }}';
     import slider from '{{ asset('assets/js/slider.js') }}';
+    {{--import cardsInfo from '{{ asset('assets/js/cardsInfo.js') }}'--}}
+    {{--import warmestCard from '{{ asset('assets/js/warmestCard.js') }}';--}}
+
 
     document.addEventListener('DOMContentLoaded', main);
 
@@ -131,8 +170,8 @@
             '.serviceSwiper',
             {
                 direction: 'horizontal',
-                autoplay:true,
-                loop:true,
+                autoplay: true,
+                loop: true,
                 speed: 400,
                 spaceBetween: 100,
                 navigation: {
@@ -147,4 +186,10 @@
             servicesData.BigSliderData
         );
     }
+
+    // let tmp = document.querySelector('.products-container')
+    // for (let item of cardsInfo) {
+    //     const card = new warmestCard.WarmestCard(item)
+    //     card.addCardTo(tmp)
+    // }
 </script>

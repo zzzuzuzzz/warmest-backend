@@ -1,5 +1,6 @@
-// objectEx = {
-//     'id': 0,
+// Пример объекта для создания карточки
+// {
+//     'id': 0, 
 //     'productName': 'productName',
 //     'isFavorite': false,
 //     'params': {
@@ -10,7 +11,7 @@
 //     },
 //     'prices': {
 //         'current': 5000000,
-//         'currentWithComm':7000000,
+//         'currentWithComm': 7000000,
 //         'other': 'Тут будет текст про ипотеку'
 //     },
 //     'photos': [
@@ -23,10 +24,10 @@
 //             '/assets/img/houses/01/01_V0_Ф30180.png',
 //             '/assets/img/houses/01/01_V0_Ф40270.png'
 //         ]
-//   
 // }
 
 import slider from "./slider.js"
+import ModalWindow from "./modalWindow.js"
 
 class WarmestCard {
     constructor(object) {
@@ -36,6 +37,7 @@ class WarmestCard {
         this.photos = object.photos
         this.params = object.params
         this.prices = object.prices
+        this.modalWindow = new ModalWindow(object)
     }
     addCardTo(parentEl) {
         parentEl.appendChild(this.getCard())
@@ -48,26 +50,9 @@ class WarmestCard {
         warmestCard.appendChild(this.getHeader())
         warmestCard.appendChild(this.getPhotoSwiperContainer())
         warmestCard.appendChild(this.getInfo())
+        warmestCard.append(this.modalWindow.getModalWindowContainer())
         return warmestCard
     }
-
-    // <div class="warmest-info-container">
-    //         <div class="prices-container">
-    //           <div class="current-price">
-    //             <span class="text">5 900 000</span>
-    //             <span class="static-text" style="color: var(--warmest-orange);">₽</span>
-    //           </div>
-    //           <div class="current-price-with-comm">
-    //             <span class="text">7 900 000</span>
-    //             <span style="color: var(--warmest-orange);">₽</span>
-    //           </div>
-    //           <div class="old-price" style="display: none;">
-    //             <span class="text"></span>
-    //             <span class="static-text" style="color: var(--warmest-orange);">₽</span>
-    //           </div>
-    //           <div class="other-price"></div>
-    //         </div>
-    //       </div>
 
     getPrices() {
         let pricesContainer = document.createElement('div');
@@ -78,6 +63,13 @@ class WarmestCard {
             {'text': this.prices.current, 'class': 'text', 'style': ''},
             {'text': '₽', 'class': '', 'style': 'color: var(--warmest-orange);'}
         ]).forEach((el) => { currentPrice.appendChild(el) })
+
+        let сommunication = document.createElement('div');
+        сommunication.className = 'current-price-with-comm value';
+
+        this.getSpanListsOfData([
+            {'text': '+ коммуникации', 'class': 'text', 'style': ''},
+        ]).forEach((el) => { сommunication.appendChild(el)})
 
         let currentPriceWithComm = document.createElement('div');
         currentPriceWithComm.className = 'current-price-with-comm value';
@@ -94,6 +86,7 @@ class WarmestCard {
             {'text': this.prices.other, 'class': 'text', 'style': 'font-size: var(--warmest-small-font-size); font-weight: 300;'}
         ]).forEach((el) => {otherPrice.appendChild(el)})
         pricesContainer.appendChild(currentPrice)
+        pricesContainer.appendChild(сommunication)
         pricesContainer.appendChild(currentPriceWithComm)
         pricesContainer.appendChild(otherPrice)
         return pricesContainer
