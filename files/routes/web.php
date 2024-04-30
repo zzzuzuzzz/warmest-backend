@@ -5,10 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
     Route::group(['prefix' => '/admin'], function () {
-        Route::get('/', \App\Http\Controllers\Admin\AdminIndexController::class)->name('admin.main.index');
-        Route::get('/singin', \App\Http\Controllers\Admin\AdminSingInController::class)->name('admin.singin')->withoutMiddleware(\App\Http\Middleware\AdminMiddleware::class);
-        Route::post('/auth', \App\Http\Controllers\Admin\AdminAuthController::class)->name('admin.auth')->withoutMiddleware(\App\Http\Middleware\AdminMiddleware::class);
-        Route::post('/logout', \App\Http\Controllers\Admin\AdminLogoutController::class)->name('admin.logout')->withoutMiddleware(\App\Http\Middleware\AdminMiddleware::class);
+        Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->withoutMiddleware(\App\Http\Middleware\AdminMiddleware::class);
+        Route::get('/home', \App\Http\Controllers\Admin\AdminIndexController::class)->name('admin.main.index');
 
         Route::group(['prefix' => '/categories'], function () {
             Route::get('/', \App\Http\Controllers\Admin\Category\IndexController::class)->name('category.index');
@@ -41,14 +39,24 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
             Route::delete('/{house}', \App\Http\Controllers\Admin\House\DeleteController::class)->name('house.delete');
         });
 
-        Route::group(['prefix' => '/administrations'], function () {
-            Route::get('/', \App\Http\Controllers\Admin\Administration\IndexController::class)->name('administration.index');
-            Route::get('/create', \App\Http\Controllers\Admin\Administration\CreateController::class)->name('administration.create');
-            Route::post('/', \App\Http\Controllers\Admin\Administration\StoreController::class)->name('administration.store');
-            Route::get('/{administration}/edit', \App\Http\Controllers\Admin\Administration\EditController::class)->name('administration.edit');
-            Route::get('/{administration}', \App\Http\Controllers\Admin\Administration\ShowController::class)->name('administration.show');
-            Route::patch('/{administration}', \App\Http\Controllers\Admin\Administration\UpdateController::class)->name('administration.update');
-            Route::delete('/{administration}', \App\Http\Controllers\Admin\Administration\DeleteController::class)->name('administration.delete');
+//        Route::group(['prefix' => '/administrations'], function () {
+//            Route::get('/', \App\Http\Controllers\Admin\Administration\IndexController::class)->name('administration.index');
+//            Route::get('/create', \App\Http\Controllers\Admin\Administration\CreateController::class)->name('administration.create');
+//            Route::post('/', \App\Http\Controllers\Admin\Administration\StoreController::class)->name('administration.store');
+//            Route::get('/{administration}/edit', \App\Http\Controllers\Admin\Administration\EditController::class)->name('administration.edit');
+//            Route::get('/{administration}', \App\Http\Controllers\Admin\Administration\ShowController::class)->name('administration.show');
+//            Route::patch('/{administration}', \App\Http\Controllers\Admin\Administration\UpdateController::class)->name('administration.update');
+//            Route::delete('/{administration}', \App\Http\Controllers\Admin\Administration\DeleteController::class)->name('administration.delete');
+//        });
+//
+        Route::group(['prefix' => '/users'], function () {
+            Route::get('/', \App\Http\Controllers\Admin\User\IndexController::class)->name('user.index');
+            Route::get('/create', \App\Http\Controllers\Admin\User\CreateController::class)->name('user.create');
+            Route::post('/', \App\Http\Controllers\Admin\User\StoreController::class)->name('user.store');
+            Route::get('/{user}/edit', \App\Http\Controllers\Admin\User\EditController::class)->name('user.edit');
+            Route::get('/{user}', \App\Http\Controllers\Admin\User\ShowController::class)->name('user.show');
+            Route::patch('/{user}', \App\Http\Controllers\Admin\User\UpdateController::class)->name('user.update');
+            Route::delete('/{user}', \App\Http\Controllers\Admin\User\DeleteController::class)->name('user.delete');
         });
     });
 });
@@ -67,4 +75,4 @@ Route::group(['prefix' => ''], function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

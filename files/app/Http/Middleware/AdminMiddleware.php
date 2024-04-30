@@ -16,9 +16,12 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (isset($_COOKIE['auth'])) {
-            return $next($request);
+        if (auth()->user() != null) {
+            if (auth()->user()->role == 'admin') {
+                return $next($request);
+            }
+            return redirect()->route('site.index');
         }
-        return redirect()->route('admin.singin');
+        return redirect()->route('site.index');
     }
 }

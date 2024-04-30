@@ -160,18 +160,18 @@
                             <p>Дополнительные услуги</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('administration.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>Администраторы</p>
-                        </a>
-                    </li>
 {{--                    <li class="nav-item">--}}
-{{--                        <a href="pages/gallery.html" class="nav-link">--}}
-{{--                            <i class="nav-icon fas fa-users"></i>--}}
-{{--                            <p>Пользователи</p>--}}
+{{--                        <a href="{{ route('administration.index') }}" class="nav-link">--}}
+{{--                            <i class="nav-icon fas fa-user"></i>--}}
+{{--                            <p>Администраторы</p>--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
+                    <li class="nav-item">
+                        <a href="{{ route('user.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Пользователи</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -189,9 +189,9 @@
             <strong>Copyright &copy; 2014-{{ now()->year }} <a href="{{ route('admin.main.index') }}">Warmest</a>.</strong>
             Все права защищены.
         </div>
-        <form action="{{ route('admin.logout') }}" method="post">
+        <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <input type="submit" value="Выйти" class="btn btn-outline-primary">
+            <button type="submit" class="btn btn-outline-primary">Выход</button>
         </form>
     </footer>
 

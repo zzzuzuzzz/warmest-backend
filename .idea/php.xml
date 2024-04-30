@@ -236,6 +236,7 @@
       <path value="$PROJECT_DIR$/files/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/files/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/files/vendor/fruitcake/php-cors" />
+      <path value="$PROJECT_DIR$/files/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
