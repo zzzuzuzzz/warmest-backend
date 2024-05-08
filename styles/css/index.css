@@ -4,6 +4,7 @@
     --warmest-card-max-width: 350px;
     --warmest-medium-margin-top: 30px;
     --warmest-orange: #FF8A00;
+    --warmest-dark-orange: #e6810d;
 }
 
 body {
@@ -51,6 +52,25 @@ body {
     gap: 10px;
     width: 100%;
 }
+
+.warmest-btn {
+    display: inline-block;
+    background-color: var(--warmest-orange);
+    border: 2px solid #ffffff00;
+    padding: 5px 0px;
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .warmest-btn:hover {
+    background-color: var(--warmest-dark-orange);
+    transition: all 200ms;
+  }
+
+  .warmest-btn:active {
+    border: 2px solid var(--bs-dark);
+    transition: all 200ms;
+  }
 
 @media screen and (max-width: 993px) {
     :root {

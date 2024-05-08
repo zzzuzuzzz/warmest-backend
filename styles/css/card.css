@@ -14,6 +14,7 @@
 
   .current-price-with-comm {
     font-size: var(--warmest-small-font-size);
+    line-height: normal;
     font-weight: 300;
   }
 
@@ -22,6 +23,10 @@
     gap: 10px;
     width: fit-content;
     align-items: center;
+  }
+
+  .option-container>.name {
+    font-size: var(--warmest-medium-font-size);
   }
 
   .value {
@@ -47,11 +52,12 @@
   }
 
   .warmest-card {
-    border: solid 2px var(--bs-body-color);
+    border: solid 2px #ffc98c;
     border-radius: 5px;
     min-width: 0;
     display: flex;
     gap: 10px;
+    justify-content: space-between;
     flex-direction: column;
     font-size: var(--warmest-medium-font-size);
     color: var(--bs-body-color);

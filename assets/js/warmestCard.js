@@ -35,6 +35,7 @@ class WarmestCard {
         this.name = object.productName
         this.isFavorite = object.isFavorite
         this.photos = object.photos
+        this.schemasPhoto = object.schemas
         this.params = object.params
         this.prices = object.prices
         this.modalWindow = new ModalWindow(object)
@@ -50,7 +51,7 @@ class WarmestCard {
         warmestCard.appendChild(this.getHeader())
         warmestCard.appendChild(this.getPhotoSwiperContainer())
         warmestCard.appendChild(this.getInfo())
-        warmestCard.append(this.modalWindow.getModalWindowContainer())
+        warmestCard.appendChild(this.modalWindow.getModalWindowContainer())
         return warmestCard
     }
 
@@ -68,7 +69,7 @@ class WarmestCard {
         сommunication.className = 'current-price-with-comm value';
 
         this.getSpanListsOfData([
-            {'text': '+ коммуникации', 'class': 'text', 'style': ''},
+            {'text': 'с коммуникациями', 'class': 'text', 'style': ''},
         ]).forEach((el) => { сommunication.appendChild(el)})
 
         let currentPriceWithComm = document.createElement('div');
@@ -86,8 +87,8 @@ class WarmestCard {
             {'text': this.prices.other, 'class': 'text', 'style': 'font-size: var(--warmest-small-font-size); font-weight: 300;'}
         ]).forEach((el) => {otherPrice.appendChild(el)})
         pricesContainer.appendChild(currentPrice)
-        pricesContainer.appendChild(сommunication)
         pricesContainer.appendChild(currentPriceWithComm)
+        pricesContainer.appendChild(сommunication)
         pricesContainer.appendChild(otherPrice)
         return pricesContainer
     }

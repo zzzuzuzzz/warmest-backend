@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Админ панель</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2/css/select2.min.css') }}">
@@ -13,8 +13,13 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -172,6 +177,12 @@
                             <p>Пользователи</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('faq.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-question"></i>
+                            <p>Вопрос - ответ</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -217,11 +228,69 @@
 <script src="{{ asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
 <script>
     //Initialize Select2 Elements
     $('.add_services_ids').select2()
+</script>
+<script type="module">
+    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
+
+    const swiper = new Swiper('.swiper', {
+        // direction: 'vertical',
+        loop: true,
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ]
+        });
+    });
+</script>
+<script>
+    document.querySelector('input[type=file]').onchange = function() {
+        $('.fileName').remove()
+        for (let i = 0; i < this.files.length; i++) {
+            let p = document.createElement("p")
+            p.textContent = this.files[i].name
+            p.classList.add('fileName')
+            document.querySelector('.previewBlock').append(p)
+        }
+    };
+</script>
+<script>
+    let display = 'view'
+    document.querySelector('.deleteIMG').addEventListener('click', function () {
+        if (display === 'view') {
+            document.querySelector('.swiper').classList.add('d-none')
+            display = 'none'
+        } else {
+            document.querySelector('.swiper').classList.remove('d-none')
+            display = 'view'
+        }
+    })
 </script>
 </body>
 </html>

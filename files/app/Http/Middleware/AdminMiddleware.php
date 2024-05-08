@@ -20,8 +20,8 @@ class AdminMiddleware
             if (auth()->user()->role == 'admin') {
                 return $next($request);
             }
-            return redirect()->route('site.index');
+            return redirect()->route('site.profile');
         }
-        return redirect()->route('site.index');
+        return redirect()->route('login');
     }
 }

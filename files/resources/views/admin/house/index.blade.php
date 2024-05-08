@@ -34,8 +34,7 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Наименование проектов</th>
-                                    <th>Описание проекта</th>
+                                    <th>Наименование проекта</th>
                                     <th>Цена проекта</th>
                                     <th>Статус проекта</th>
                                 </tr>
@@ -45,7 +44,6 @@
                                     <tr>
                                         <td>{{ $house->id }}</td>
                                         <td><a href="{{ route('house.show', $house->id) }}">{{ $house->title }}</a></td>
-                                        <td>{{ $house->description }}</td>
                                         <td>{{ $house->main_price }}</td>
                                         <td>{{ $house->is_published ? 'Опубликовано' : 'Не опубликовано'}}</td>
                                     </tr>

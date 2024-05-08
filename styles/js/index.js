@@ -1,4 +1,5 @@
-import servicesData from "./../../assets/js/servicesData.js";
+import warmestCard from "./../../assets/js/warmestCard.js";
+import CARDS_INFO from "../../assets/js/cardsInfo.js";
 
 document.addEventListener('DOMContentLoaded', main)
 
@@ -28,38 +29,55 @@ function resizeNoneMobileBlocks(windowWidth) {
     }
     noneMobileBlocks.forEach((element) => {
         element.style.setProperty('display', display, 'important')
-    })
-    
+    })   
 }
 
-function initSwipers() {
-    new slider.Slider(
-        '.serviceSwiper', 
-        {
-            direction: 'horizontal',
-            autoplay:true,
-            loop:true,
-            speed: 400,
-            spaceBetween: 100,
-            navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                dynamicBullets: true,
-            }
-        },
-        servicesData.BigSliderData
-    )
+function resizeModalInfoContainer(windowWidth) {
+    let modalInfoContainers = document.querySelectorAll('.modal-info-container');
+    if (windowWidth < 1200) {
+        modalInfoContainers.forEach((el) => {
+            el.style = 'flex-direction: column'
+        })
+    } else {
+        modalInfoContainers.forEach((el) => {
+            el.style = 'flex-direction: row'
+        })
+    }
+}
+
+function displayButtonLinkMobile(windowWidth) {
+    let buttons = document.querySelectorAll('.btn-link-mobile');
+    if (windowWidth < MobileWindowWidth) {
+        buttons.forEach((el) => {
+            el.style.display = 'block'
+        })
+    } else {
+        buttons.forEach((el) => {
+            el.style.display = 'none'
+        })
+    }
+}
+
+function initCards() {
+    let productContainer = document.querySelector('.products-container')
+    for (let item of CARDS_INFO) {
+      const card = new warmestCard.WarmestCard(item)
+      card.addCardTo(productContainer)
+      card.modalWindow.addSwiperToModal(card.modalWindow.sliderId, card.photos)
+      if (card.schemasPhoto) card.modalWindow.addSwiperToModal(card.modalWindow.sliderId+'schemas', card.schemasPhoto)
+    }
 }
 
 function main() {
+    initCards()
+    displayButtonLinkMobile(window.innerWidth);
     resizeBlocksWithImg(window.innerWidth);
     resizeNoneMobileBlocks(window.innerWidth);
+    resizeModalInfoContainer(window.innerWidth)
     window.addEventListener('resize', (event) => {
+        displayButtonLinkMobile(event.target.innerWidth);
         resizeBlocksWithImg(event.target.innerWidth);
         resizeNoneMobileBlocks(event.target.innerWidth);
+        resizeModalInfoContainer(event.target.innerWidth);
     })
-    // initSwipers();
 }

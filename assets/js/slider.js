@@ -7,13 +7,13 @@ class Slider {
     }
 
     __setAdaptiveStyles() {
-        if (window.innerWidth > 993) {
-            this.slider.navigation.nextEl.style = 'display:block';
-            this.slider.navigation.prevEl.style = 'display:block';
-        } else {
-            this.slider.navigation.nextEl.style = 'display:none';
-            this.slider.navigation.prevEl.style = 'display:none';
-        }
+            if (window.innerWidth > 993) {
+                this.slider.navigation.nextEl.style = 'display:block';
+                this.slider.navigation.prevEl.style = 'display:block';
+            } else {
+                this.slider.navigation.nextEl.style = 'display:none';
+                this.slider.navigation.prevEl.style = 'display:none';
+            }
     }
 
     addTextSlides(data) {

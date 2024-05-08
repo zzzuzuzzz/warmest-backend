@@ -15,16 +15,19 @@ return new class extends Migration
             $table->id();
 
             $table->string('title');
+            $table->string('params_size');
+            $table->string('params_floors');
+            $table->string('params_length');
+            $table->string('params_width');
+
             $table->text('description');
-            $table->text('content');
-            $table->string('preview_image');
 
-            $table->integer('main_price');
-            $table->integer('add_price');
+            $table->string('main_price');
+            $table->string('add_price');
+            $table->string('credit_info');
+
             $table->boolean('is_published')->default(0);
-
             $table->foreignId('category_id')->nullable()->index()->constrained('categories');
-            $table->string('add_services_ids');
         });
     }
 

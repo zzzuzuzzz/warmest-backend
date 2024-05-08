@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/css/nav-bar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/css/card.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/css/swiper.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/css/table.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/css/modal.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/css/profile.css') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <script src="{{ asset('styles/js/index.js') }}" defer type="module"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -17,6 +20,7 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/4380d47dd2.js" crossorigin="anonymous"></script>
     <title>Warmest</title>
+    <meta name="format-detection" content="telephone=no">
 </head>
 
 <body>
@@ -41,7 +45,7 @@
                     <a class="nav-link" href="#">Малые формы</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.catalog') }}">Наши объекты</a>
+                    <a class="nav-link" href="{{ route('site.catalog') }}">Дома</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('site.index#our-services') }}">Услуги</a>
@@ -55,25 +59,28 @@
                 <li class="nav-item" style="display: none;">
                     <a class="nav-link" href="#">Для инвестора</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('site.profile') }}">Личный кабинет</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<div id="main-content-block">
+    <div id="main-content-block">
     @yield('content')
-</div>
-<div id="tmp-like"></div>
+    </div>
 <div id="footer" class="d-flex flex-column bg-dark p-2 main-page-block" style="color: #fff;">
     <div class="d-flex p-1 justify-content-center">
         <span class="logo">Warmest</span>
     </div>
     <div id="warmest-footer-data" class="d-flex container p-2">
         <div class="d-flex flex-column gap-2" style="font-size: var(--warmest-medium-font-size);">
-        <span style="font-weight: 500; color: var(--warmest-orange); text-decoration: underline;">
-          Мы на связи
-        </span>
+          <span style="font-weight: 500; color: var(--warmest-orange); text-decoration: underline;">
+            Мы на связи
+          </span>
             <div class="d-flex flex-column gap-1" style="font-size: var(--warmest-small-font-size);">
                 <span>+7(977)197-47-47</span>
+                <span>+7(963)766-79-91</span>
                 <span>s9773237640@gmail.com</span>
             </div>
         </div>
