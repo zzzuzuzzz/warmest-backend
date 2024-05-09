@@ -1,0 +1,7 @@
+@import '/styles/css/index.css';
+
+.logo {
+    font-size: var(--warmest-large-font-size);
+    font-weight: 600;
+    color: var(--warmest-orange);
+}
