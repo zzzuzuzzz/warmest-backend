@@ -1,7 +1,7 @@
 @extends('site.profile')
 @section('profileContent')
     <section class="content" style="width: 100%; padding: 15px">
-        <form action="{{ route('site.profile.question.store') }}" method="post">
+        <form action="{{ route('site.profile.question.store') }}" method="post" class="questionForm">
             @csrf
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Ваше ФИО</label>
@@ -37,7 +37,7 @@
         </form>
     </section>
     <script>
-        document.addEventListener('submit', function () {
+        document.querySelector('.questionForm').addEventListener('submit', function () {
             alert('Ваше сообщение отправлено')
         })
     </script>

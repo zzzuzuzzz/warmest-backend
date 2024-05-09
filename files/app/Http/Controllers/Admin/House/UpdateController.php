@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\House;
 
+use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddServices\UpdateRequest;
 use App\Models\AddService;
@@ -43,7 +44,9 @@ class UpdateController extends Controller
 //        } else {
 //            $addServicesList = ['Дополнительные услуги не выбраны'];
 //        }
+        $passedTime = NotificationsForController::passedTime();
+        $questions = NotificationsForController::questions();
 
-        return view('admin.house.show', compact('house', 'category', 'addServicesList'));
+        return view('admin.house.show', compact('house', 'category', 'addServicesList', 'questions', 'passedTime'));
     }
 }

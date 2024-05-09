@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\House;
 
+use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
 use App\Models\AddServiceHouse;
 use App\Models\House;
@@ -15,7 +16,9 @@ class DeleteController extends Controller
         ImageHouse::where('house_id', $house->id)->delete();
         Storage::disk('public')->delete('images/' . $house->title);
         $house->delete();
+        $passedTime = NotificationsForController::passedTime();
+        $questions = NotificationsForController::questions();
 
-        return redirect()->route('house.index');
+        return redirect()->route('house.index', compact('questions', 'passedTime'));
     }
 }

@@ -24,7 +24,9 @@ class ShowController extends Controller
         foreach (AddServiceHouse::where('house_id', $house->id)->get() as $as) {
             $addServices[] = AddService::find($as->add_service_id);
         }
+        require '../NotificationsForController.php';
 
-        return view('admin.house.show', compact('house', 'category', 'images', 'addServices'));
+
+        return view('admin.house.show', compact('house', 'category', 'images', 'addServices', 'questions', 'passedTime'));
     }
 }

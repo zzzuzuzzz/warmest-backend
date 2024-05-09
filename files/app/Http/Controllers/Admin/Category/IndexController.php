@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Category;
 
+use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 
@@ -9,6 +10,9 @@ class IndexController extends Controller
 {
     public function __invoke() {
         $categories = Category::all();
-        return view('admin.category.index', compact('categories'));
+        $passedTime = NotificationsForController::passedTime();
+        $questions = NotificationsForController::questions();
+
+        return view('admin.category.index', compact('categories', 'questions', 'passedTime'));
     }
 }

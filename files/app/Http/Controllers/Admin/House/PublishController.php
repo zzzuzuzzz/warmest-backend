@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\House;
 
+use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
 use App\Models\AddService;
 use App\Models\AddServiceHouse;
@@ -35,7 +36,10 @@ class PublishController extends Controller
         foreach (AddServiceHouse::where('house_id', $house->id)->get() as $as) {
             $addServices[] = AddService::find($as->add_service_id);
         }
+        $passedTime = NotificationsForController::passedTime();
+        $questions = NotificationsForController::questions();
 
-        return view('admin.house.show', compact('house', 'category', 'images', 'addServices'));
+
+        return view('admin.house.show', compact('house', 'category', 'images', 'addServices', 'questions', 'passedTime'));
     }
 }

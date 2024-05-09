@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\House;
 
+use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Houses\StoreRequest;
 use App\Models\AddServiceHouse;
@@ -77,7 +78,9 @@ class StoreController extends Controller
                 'house_id' => (House::where('title', $date['title'])->get())[0]->id
             ]);
         }
+        $passedTime = NotificationsForController::passedTime();
+        $questions = NotificationsForController::questions();
 
-        return redirect()->route('house.index');
+        return redirect()->route('house.index', compact('questions', 'passedTime'));
     }
 }

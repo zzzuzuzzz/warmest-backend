@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\House;
 
+use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
 use App\Models\AddService;
 use App\Models\AddServiceHouse;
@@ -29,6 +30,9 @@ class EditController extends Controller
                 $imageHouseList[] = $ih->image;
             }
         }
-        return view('admin.house.edit', compact('house', 'categories', 'addServices', 'addServiceHousesList', 'imageHouseList'));
+        $passedTime = NotificationsForController::passedTime();
+        $questions = NotificationsForController::questions();
+
+        return view('admin.house.edit', compact('house', 'categories', 'addServices', 'addServiceHousesList', 'imageHouseList', 'questions', 'passedTime'));
     }
 }
