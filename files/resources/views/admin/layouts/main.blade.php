@@ -44,22 +44,27 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
+                    <span class="badge badge-danger navbar-badge">{{ count($questions) }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
-                        <div class="media">
-                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
+                        @if(count($questions) > 0)
+                            @foreach($questionsForMsg as $question)
+                                <div class="media">
+                                    <i class="fas fa-envelope mr-2"></i>
+                                    <div class="media-body">
+                                        <h3 class="dropdown-item-title">
+                                            {{ $question->name }}
+                                        </h3>
+                                        <p class="text-sm">{{ $question->theme }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <i class="fas fa-envelope mr-2"></i>
+                            Нет новых сообщений
+                        @endif
                         <!-- Message End -->
                     </a>
                     <div class="dropdown-divider"></div>
@@ -95,7 +100,7 @@
 {{--                        <!-- Message End -->--}}
 {{--                    </a>--}}
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+{{--                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>--}}
                 </div>
             </li>
             <!-- Notifications Dropdown Menu -->
@@ -193,7 +198,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('question.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>Сообщения</p>
                         </a>

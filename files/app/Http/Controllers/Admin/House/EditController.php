@@ -32,7 +32,11 @@ class EditController extends Controller
         }
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return view('admin.house.edit', compact('house', 'categories', 'addServices', 'addServiceHousesList', 'imageHouseList', 'questions', 'passedTime'));
+
+
+        return view('admin.house.edit', compact('house', 'categories', 'addServices', 'addServiceHousesList', 'imageHouseList', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }

@@ -14,7 +14,11 @@ class StoreController extends Controller
         AddService::firstOrCreate($date);
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return redirect()->route('addService.index', compact('questions', 'passedTime'));
+
+
+        return redirect()->route('addService.index', compact('questions', 'passedTime','questionsForMsg'
+));
     }
 }

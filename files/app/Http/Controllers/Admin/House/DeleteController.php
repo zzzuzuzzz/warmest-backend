@@ -18,7 +18,11 @@ class DeleteController extends Controller
         $house->delete();
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return redirect()->route('house.index', compact('questions', 'passedTime'));
+
+
+        return redirect()->route('house.index', compact('questions', 'passedTime','questionsForMsg'
+));
     }
 }

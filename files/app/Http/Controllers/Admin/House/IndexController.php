@@ -12,8 +12,12 @@ class IndexController extends Controller
         $houses = House::all();
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
 
-        return view('admin.house.index', compact('houses', 'questions', 'passedTime'));
+
+
+        return view('admin.house.index', compact('houses', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }

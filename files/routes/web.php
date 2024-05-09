@@ -67,6 +67,12 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
             Route::patch('/{faq}', \App\Http\Controllers\Admin\Faq\UpdateController::class)->name('faq.update');
             Route::delete('/{faq}', \App\Http\Controllers\Admin\Faq\DeleteController::class)->name('faq.delete');
         });
+
+        Route::group(['prefix' => '/questions'], function () {
+            Route::get('/', \App\Http\Controllers\Admin\Question\IndexController::class)->name('question.index');
+            Route::get('/{question}', \App\Http\Controllers\Admin\Question\ShowController::class)->name('question.show');
+            Route::delete('/{question}', \App\Http\Controllers\Admin\Question\DeleteController::class)->name('question.delete');
+        });
     });
 });
 

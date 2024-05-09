@@ -12,7 +12,11 @@ class IndexController extends Controller
         $addServices = AddService::all();
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return view('admin.addService.index', compact('addServices', 'questions', 'passedTime'));
+
+
+        return view('admin.addService.index', compact('addServices', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }

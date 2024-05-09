@@ -14,8 +14,11 @@ class StoreController extends Controller
         User::firstOrCreate($date);
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
 
-        return redirect()->route('user.index', compact('passedTime', 'questions'));
+
+
+        return redirect()->route('user.index', compact('passedTime', 'questions', 'questionsForMsg'));
     }
 }

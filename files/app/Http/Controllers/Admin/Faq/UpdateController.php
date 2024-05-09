@@ -14,8 +14,12 @@ class UpdateController extends Controller
         $faq->update($date);
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
 
-        return view('admin.faq.show', compact('faq', 'questions', 'passedTime'));
+
+
+        return view('admin.faq.show', compact('faq', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }

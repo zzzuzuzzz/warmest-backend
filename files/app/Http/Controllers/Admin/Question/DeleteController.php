@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Faq;
+namespace App\Http\Controllers\Admin\Question;
 
 use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
-use App\Models\Faq;
+use App\Models\Question;
 
-class IndexController extends Controller
+class DeleteController extends Controller
 {
-    public function __invoke() {
-        $faqs = Faq::all();
+    public function __invoke(Question $question) {
+        $question->delete();
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
         $questionsForMsg = NotificationsForController::questionsForMsg();
 
 
 
-        return view('admin.faq.index', compact('faqs', 'questions', 'passedTime','questionsForMsg'
+        return redirect()->route('question.index', compact('questions', 'passedTime','questionsForMsg'
 ));
     }
 }

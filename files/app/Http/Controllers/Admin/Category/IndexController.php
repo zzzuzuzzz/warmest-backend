@@ -12,7 +12,11 @@ class IndexController extends Controller
         $categories = Category::all();
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return view('admin.category.index', compact('categories', 'questions', 'passedTime'));
+
+
+        return view('admin.category.index', compact('categories', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }

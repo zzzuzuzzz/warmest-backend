@@ -11,7 +11,11 @@ class ShowController extends Controller
     public function __invoke(Category $category) {
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return view('admin.category.show', compact('category', 'questions', 'passedTime'));
+
+
+        return view('admin.category.show', compact('category', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }

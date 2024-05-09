@@ -12,7 +12,10 @@ class IndexController extends Controller
         $users = User::all();
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return view('admin.user.index', compact('users', 'passedTime', 'questions'));
+
+
+        return view('admin.user.index', compact('users', 'passedTime', 'questions', 'questionsForMsg'));
     }
 }

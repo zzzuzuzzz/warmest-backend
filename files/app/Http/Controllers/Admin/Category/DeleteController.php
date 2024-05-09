@@ -12,7 +12,11 @@ class DeleteController extends Controller
         $category->delete();
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return redirect()->route('category.index', compact('questions', 'passedTime'));
+
+
+        return redirect()->route('category.index', compact('questions', 'passedTime','questionsForMsg'
+));
     }
 }

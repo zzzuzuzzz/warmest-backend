@@ -21,11 +21,11 @@
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Тема вопроса</label>
                 <select class="form-control" id="formGroupExampleInput" name="theme">
-                    <option value="theme_one">Тема 1</option>
-                    <option value="theme_two">Тема 2</option>
-                    <option value="theme_three">Тема 3</option>
-                    <option value="theme_four">Тема 4</option>
-                    <option value="theme_five">Тема 5</option>
+                    <option value="Тема 1">Тема 1</option>
+                    <option value="Тема 2">Тема 2</option>
+                    <option value="Тема 3">Тема 3</option>
+                    <option value="Тема 4">Тема 4</option>
+                    <option value="Тема 5">Тема 5</option>
                 </select>
             </div>
             <div class="mb-3">

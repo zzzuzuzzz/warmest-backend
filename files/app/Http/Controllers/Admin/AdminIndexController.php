@@ -16,7 +16,11 @@ class AdminIndexController extends Controller
         $usersNumber = count(User::all());
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return view('admin.main.index', compact('housesNumber', 'addServicesNumber', 'usersNumber', 'questions', 'passedTime'));
+
+
+        return view('admin.main.index', compact('housesNumber', 'addServicesNumber', 'usersNumber', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }

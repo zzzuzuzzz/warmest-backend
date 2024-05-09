@@ -38,8 +38,12 @@ class PublishController extends Controller
         }
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
 
-        return view('admin.house.show', compact('house', 'category', 'images', 'addServices', 'questions', 'passedTime'));
+
+
+        return view('admin.house.show', compact('house', 'category', 'images', 'addServices', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }

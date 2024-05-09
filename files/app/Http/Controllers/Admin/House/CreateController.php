@@ -15,7 +15,11 @@ class CreateController extends Controller
         $addServices = AddService::all();
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return view('admin.house.create', compact('categories', 'addServices', 'questions', 'passedTime'));
+
+
+        return view('admin.house.create', compact('categories', 'addServices', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }

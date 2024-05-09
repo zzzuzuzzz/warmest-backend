@@ -14,7 +14,11 @@ class UpdateController extends Controller
         $category->update($date);
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return view('admin.category.show', compact('category','questions', 'passedTime'));
+
+
+        return view('admin.category.show', compact('category','questions', 'passedTime','questionsForMsg'
+));
     }
 }

@@ -14,7 +14,11 @@ class UpdateController extends Controller
         $addService->update($date);
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return view('admin.addService.show', compact('addService', 'questions', 'passedTime'));
+
+
+        return view('admin.addService.show', compact('addService', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }

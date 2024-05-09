@@ -14,8 +14,11 @@ class UpdateController extends Controller
         $user->update($date);
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
 
-        return view('admin.user.show', compact('user', 'passedTime', 'questions'));
+
+
+        return view('admin.user.show', compact('user', 'passedTime', 'questions', 'questionsForMsg'));
     }
 }

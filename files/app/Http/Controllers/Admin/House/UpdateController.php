@@ -46,7 +46,11 @@ class UpdateController extends Controller
 //        }
         $passedTime = NotificationsForController::passedTime();
         $questions = NotificationsForController::questions();
+        $questionsForMsg = NotificationsForController::questionsForMsg();
 
-        return view('admin.house.show', compact('house', 'category', 'addServicesList', 'questions', 'passedTime'));
+
+
+        return view('admin.house.show', compact('house', 'category', 'addServicesList', 'questions', 'passedTime','questionsForMsg'
+));
     }
 }
