@@ -6,11 +6,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Сообщения</h1>
+                    <h1 class="m-0">Заявки</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active"><a href="{{ route('admin.main.index') }}">Главная</a> / Сообщения</li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.main.index') }}">Главная</a> / Заявки</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,7 +24,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">Сообщения</h3>
+                    <h3 class="card-title">Заявки</h3>
                 </div>
                 <div class="card-body p-0">
                     <div class="mailbox-controls">
@@ -46,19 +46,17 @@
                         <table class="table table-hover table-striped">
                             <tbody>
                             <tr>
-                                <th>Имя отправителя</th>
-                                <th>Тема вопроса</th>
-                                <th>Вопрос</th>
+                                <th>Имя заявителя</th>
+                                <th>Email заявителя</th>
                             </tr>
-                            @foreach($questionsForPage as $question)
+                            @foreach($applications as $application)
                                     <tr style="
                                     @if($question->viewed == 'false')
                                         background-color: rgba(255,0,0,0.19);
                                     @endif
                                     ">
-                                        <td class="mailbox-name"><a href="{{ route('question.show', $question->id) }}">{{ $question->name }}</a></td>
-                                        <td class="mailbox-name">{{ $question->theme }}</td>
-                                        <td class="mailbox-subject">{{ $question->question }}</td>
+                                        <td class="mailbox-name"><a href="{{ route('question.show', $application->id) }}">{{ $application->name }}</a></td>
+                                        <td class="mailbox-name">{{ $application->email }}</td>
                                     </tr>
                             @endforeach
                             </tbody>

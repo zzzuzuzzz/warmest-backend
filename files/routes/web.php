@@ -38,18 +38,9 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
             Route::delete('/{house}', \App\Http\Controllers\Admin\House\DeleteController::class)->name('house.delete');
         });
 
-//        Route::group(['prefix' => '/administrations'], function () {
-//            Route::get('/', \App\Http\Controllers\Admin\Administration\IndexController::class)->name('administration.index');
-//            Route::get('/create', \App\Http\Controllers\Admin\Administration\CreateController::class)->name('administration.create');
-//            Route::post('/', \App\Http\Controllers\Admin\Administration\StoreController::class)->name('administration.store');
-//            Route::get('/{administration}/edit', \App\Http\Controllers\Admin\Administration\EditController::class)->name('administration.edit');
-//            Route::get('/{administration}', \App\Http\Controllers\Admin\Administration\ShowController::class)->name('administration.show');
-//            Route::patch('/{administration}', \App\Http\Controllers\Admin\Administration\UpdateController::class)->name('administration.update');
-//            Route::delete('/{administration}', \App\Http\Controllers\Admin\Administration\DeleteController::class)->name('administration.delete');
-//        });
-//
         Route::group(['prefix' => '/users'], function () {
             Route::get('/', \App\Http\Controllers\Admin\User\IndexController::class)->name('user.index');
+            Route::get('/admins', \App\Http\Controllers\Admin\User\IndexAdminController::class)->name('user.admin.index');
             Route::get('/create', \App\Http\Controllers\Admin\User\CreateController::class)->name('user.create');
             Route::post('/', \App\Http\Controllers\Admin\User\StoreController::class)->name('user.store');
             Route::get('/{user}/edit', \App\Http\Controllers\Admin\User\EditController::class)->name('user.edit');
@@ -71,7 +62,15 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
         Route::group(['prefix' => '/questions'], function () {
             Route::get('/', \App\Http\Controllers\Admin\Question\IndexController::class)->name('question.index');
             Route::get('/{question}', \App\Http\Controllers\Admin\Question\ShowController::class)->name('question.show');
+//            Route::get('/create/{question}', \App\Http\Controllers\Admin\Question\CreateController::class)->name('question.create');
             Route::delete('/{question}', \App\Http\Controllers\Admin\Question\DeleteController::class)->name('question.delete');
+        });
+
+        Route::group(['prefix' => '/applications'], function () {
+            Route::get('/', \App\Http\Controllers\Admin\Application\IndexController::class)->name('application.index');
+            Route::get('/{application}', \App\Http\Controllers\Admin\Application\ShowController::class)->name('application.show');
+//            Route::get('/create/{application}', \App\Http\Controllers\Admin\Application\CreateController::class)->name('application.create');
+            Route::delete('/{application}', \App\Http\Controllers\Admin\Application\DeleteController::class)->name('application.delete');
         });
     });
 });

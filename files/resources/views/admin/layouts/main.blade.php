@@ -44,7 +44,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">{{ count($questions) }}</span>
+                    @if(count($questions) > 0)
+                        <span class="badge badge-danger navbar-badge">{{ count($questions) }}</span>
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <a href="#" class="dropdown-item">
@@ -100,14 +102,16 @@
 {{--                        <!-- Message End -->--}}
 {{--                    </a>--}}
                     <div class="dropdown-divider"></div>
-{{--                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>--}}
+                    <a href="{{ route('question.index') }}" class="dropdown-item dropdown-footer">Посмотреть все сообщения</a>
                 </div>
             </li>
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">{{ count($questions) }}</span>
+                    @if(count($questions) > 0)
+                        <span class="badge badge-warning navbar-badge">{{ count($questions) }}</span>
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <span class="dropdown-item dropdown-header">{{ count($questions) }} Уведомлений</span>
@@ -156,7 +160,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('application.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-bell"></i>
                             <p>Заявки</p>
                         </a>
@@ -180,7 +184,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('user.admin.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>Администраторы</p>
                         </a>

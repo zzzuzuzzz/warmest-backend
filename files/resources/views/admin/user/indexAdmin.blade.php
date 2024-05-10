@@ -6,11 +6,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Администраторы</h1>
+                    <h1 class="m-0">Админинстраторы</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.main.index') }}">Главная</a> / <a href="{{ route('user.index') }}">Пользователи</a> / Администраторы</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -26,7 +26,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ route('administration.create') }}" class="btn btn-primary">Добавить</a>
+                            <a href="{{ route('user.create') }}" class="btn btn-primary">Добавить</a>
+                            <a href="{{ route('user.index') }}" class="btn btn-outline-primary ml-2">Сбросить фильтр</a>
                         </div>
 
                         <div class="card-body table-responsive p-0">
@@ -34,14 +35,18 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Логин администратора</th>
+                                    <th>Имя пользователя</th>
+                                    <th>Почта пользователя</th>
+                                    <th>Роль пользователя</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($administrations as $administration)
+                                @foreach($users as $user)
                                     <tr>
-                                        <td>{{ $administration->id }}</td>
-                                        <td><a href="{{ route('administration.show', $administration->id) }}">{{ $administration->login }}</a></td>
+                                        <td>{{ $user->id }}</td>
+                                        <td><a href="{{ route('user.show', $user->id) }}">{{ $user->name }}</a></td>
+                                        <td><a href="{{ route('user.show', $user->id) }}">{{ $user->email }}</a></td>
+                                        <td>{{ $user->role == 'admin' ? 'Администратор' : 'Пользователь' }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

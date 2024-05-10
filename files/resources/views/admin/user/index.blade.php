@@ -27,6 +27,7 @@
                     <div class="card">
                         <div class="card-header">
                             <a href="{{ route('user.create') }}" class="btn btn-primary">Добавить</a>
+                            <a href="{{ route('user.admin.index') }}" class="btn btn-outline-primary ml-2">Показать только администраторов</a>
                         </div>
 
                         <div class="card-body table-responsive p-0">
