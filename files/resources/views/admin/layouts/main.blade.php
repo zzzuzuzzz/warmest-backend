@@ -67,40 +67,8 @@
                             <i class="fas fa-envelope mr-2"></i>
                             Нет новых сообщений
                         @endif
-                        <!-- Message End -->
                     </a>
                     <div class="dropdown-divider"></div>
-{{--                    <a href="#" class="dropdown-item">--}}
-{{--                        <!-- Message Start -->--}}
-{{--                        <div class="media">--}}
-{{--                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}
-{{--                            <div class="media-body">--}}
-{{--                                <h3 class="dropdown-item-title">--}}
-{{--                                    John Pierce--}}
-{{--                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>--}}
-{{--                                </h3>--}}
-{{--                                <p class="text-sm">I got your message bro</p>--}}
-{{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <!-- Message End -->--}}
-{{--                    </a>--}}
-{{--                    <div class="dropdown-divider"></div>--}}
-{{--                    <a href="#" class="dropdown-item">--}}
-{{--                        <!-- Message Start -->--}}
-{{--                        <div class="media">--}}
-{{--                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}
-{{--                            <div class="media-body">--}}
-{{--                                <h3 class="dropdown-item-title">--}}
-{{--                                    Nora Silvester--}}
-{{--                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>--}}
-{{--                                </h3>--}}
-{{--                                <p class="text-sm">The subject goes here</p>--}}
-{{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <!-- Message End -->--}}
-{{--                    </a>--}}
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('question.index') }}" class="dropdown-item dropdown-footer">Посмотреть все сообщения</a>
                 </div>
@@ -109,17 +77,16 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="far fa-bell"></i>
-                    @if(count($questions) > 0)
-                        <span class="badge badge-warning navbar-badge">{{ count($questions) }}</span>
+                    @if($numberNotification > 0)
+                        <span class="badge badge-warning navbar-badge">{{ $numberNotification }}</span>
                     @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">{{ count($questions) }} Уведомлений</span>
-
+                    <span class="dropdown-item dropdown-header">{{ $numberNotification }} Уведомлений</span>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
+                    <a href="{{ route('question.index') }}" class="dropdown-item">
                         <i class="fas fa-envelope mr-2"></i>
-                        @if(count($questions) > 0)
+                        @if(isset($questions))
                             {{ count($questions) }} новых сообщений
                             <span class="float-right text-muted text-sm">{{ $passedTime }}</span>
                         @else
@@ -127,19 +94,16 @@
                         @endif
                     </a>
 
-{{--                    <div class="dropdown-divider"></div>--}}
-{{--                    <a href="#" class="dropdown-item">--}}
-{{--                        <i class="fas fa-users mr-2"></i> 8 friend requests--}}
-{{--                        <span class="float-right text-muted text-sm">12 hours</span>--}}
-{{--                    </a>--}}
-
-{{--                    <div class="dropdown-divider"></div>--}}
-{{--                    <a href="#" class="dropdown-item">--}}
-{{--                        <i class="fas fa-file mr-2"></i> 3 new reports--}}
-{{--                        <span class="float-right text-muted text-sm">2 days</span>--}}
-{{--                    </a>--}}
-{{--                    <div class="dropdown-divider"></div>--}}
-{{--                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>--}}
+                    <div class="dropdown-divider"></div>
+                    <a href="{{ route('application.index') }}" class="dropdown-item">
+                        <i class="fas fa-bell mr-2"></i>
+                        @if(isset($applications))
+                            {{ count($applications) }} новых заявок
+                            <span class="float-right text-muted text-sm">{{ $passedTimeApplication }}</span>
+                        @else
+                            Нет новых заявок
+                        @endif
+                    </a>
                 </div>
             </li>
         </ul>

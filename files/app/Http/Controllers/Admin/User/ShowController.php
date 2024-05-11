@@ -10,11 +10,14 @@ class ShowController extends Controller
 {
     public function __invoke(User $user) {
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
-
-        return view('admin.user.show', compact('user', 'passedTime', 'questions', 'questionsForMsg'));
+        return view('admin.user.show', compact('user', 'passedTime', 'questions', 'questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'));
     }
 }

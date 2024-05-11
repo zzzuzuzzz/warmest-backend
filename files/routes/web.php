@@ -83,6 +83,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('#house-block', \App\Http\Controllers\Site\HouseController::class)->name('site.index#house-block');
     Route::get('#contact-us-block', \App\Http\Controllers\Site\ContactController::class)->name('site.index#contact-us-block');
     Route::get('/catalog', \App\Http\Controllers\Site\CatalogController::class)->name('site.catalog');
+    Route::post('/application/store', \App\Http\Controllers\Site\ApplicationStoreController::class)->name('site.application.store');
     Route::middleware(\App\Http\Middleware\LoginMiddleware::class)->group(function () {
         Route::group(['prefix' => '/profile'], function () {
             Route::get('', \App\Http\Controllers\Site\ProfileController::class)->name('site.profile');

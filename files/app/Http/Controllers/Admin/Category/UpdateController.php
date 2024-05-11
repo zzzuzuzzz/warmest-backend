@@ -13,12 +13,15 @@ class UpdateController extends Controller
         $date = $request->validated();
         $category->update($date);
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
-
-        return view('admin.category.show', compact('category','questions', 'passedTime','questionsForMsg'
+        return view('admin.category.show', compact('category','questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

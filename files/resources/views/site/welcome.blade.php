@@ -78,6 +78,37 @@
             </div>
         </div>
     </div>
+    <div class="card mt-5 mb-5">
+        <div class="card-body row justify-content-center" style="@media screen and (max-width: 600px) {flex-direction: column; align-items: center}">
+            <div class="col-5 text-center d-flex align-items-center justify-content-center">
+                <div>
+                    <h2>WARMEST</h2>
+                    <p class="lead mb-5">Каширское шоссе, владение 63к1<br>
+                        Телефон: +7 (977) 197-47-47
+                    </p>
+                </div>
+            </div>
+            <form class="col-5" action="{{ route('site.application.store') }}" method="post">
+                @csrf
+                <h4>Оставить заявку на обратный звонок</h4>
+                <div class="form-group mt-2">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Иванов Иван Иванович"/>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Ivan_ivanov@mail.ru"/>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="number">Номер телефона (необязательно)</label>
+                    <input type="number" id="number" name="number" class="form-control" placeholder="89999855353"/>
+                </div>
+                <div class="form-group mt-2">
+                    <input type="submit" class="btn btn-primary" value="Оставить заявку">
+                </div>
+            </form>
+        </div>
+    </div>
     <div id="house-block" class="d-flex container flex-column align-items-center main-page-block"
          style="gap:30px; text-align: justify;">
         <div class="title">
@@ -98,7 +129,6 @@
             </div>
         </div>
     </div>
-
     <div id="contact-us-block" class="d-flex container flex-column align-items-center main-page-block"
          style="gap:30px; text-align: justify;">
         <div class="title container text-center">

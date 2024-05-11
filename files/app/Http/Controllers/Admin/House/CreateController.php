@@ -14,12 +14,15 @@ class CreateController extends Controller
         $categories = Category::all();
         $addServices = AddService::all();
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
-
-        return view('admin.house.create', compact('categories', 'addServices', 'questions', 'passedTime','questionsForMsg'
+        return view('admin.house.create', compact('categories', 'addServices', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

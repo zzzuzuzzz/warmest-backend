@@ -11,11 +11,14 @@ class IndexController extends Controller
     public function __invoke() {
         $users = User::all();
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
-
-        return view('admin.user.index', compact('users', 'passedTime', 'questions', 'questionsForMsg'));
+        return view('admin.user.index', compact('users', 'passedTime', 'questions', 'questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'));
     }
 }

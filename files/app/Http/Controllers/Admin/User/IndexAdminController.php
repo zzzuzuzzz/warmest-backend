@@ -11,11 +11,14 @@ class IndexAdminController extends Controller
     public function __invoke() {
         $users = User::where('role', 'admin')->get();
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
-
-        return view('admin.user.indexAdmin', compact('users', 'passedTime', 'questions', 'questionsForMsg'));
+        return view('admin.user.indexAdmin', compact('users', 'passedTime', 'questions', 'questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'));
     }
 }

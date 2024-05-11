@@ -51,11 +51,11 @@
                             </tr>
                             @foreach($applications as $application)
                                     <tr style="
-                                    @if($question->viewed == 'false')
+                                    @if($application->viewed == 'false')
                                         background-color: rgba(255,0,0,0.19);
                                     @endif
                                     ">
-                                        <td class="mailbox-name"><a href="{{ route('question.show', $application->id) }}">{{ $application->name }}</a></td>
+                                        <td class="mailbox-name"><a href="{{ route('application.show', $application->id) }}">{{ $application->name }}</a></td>
                                         <td class="mailbox-name">{{ $application->email }}</td>
                                     </tr>
                             @endforeach

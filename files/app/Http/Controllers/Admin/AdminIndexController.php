@@ -15,12 +15,17 @@ class AdminIndexController extends Controller
         $addServicesNumber = count(AddService::all());
         $usersNumber = count(User::all());
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $applicationsNumber = count($applications) > 0 ? count($applications) : 0;
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
 
-        return view('admin.main.index', compact('housesNumber', 'addServicesNumber', 'usersNumber', 'questions', 'passedTime','questionsForMsg'
+        return view('admin.main.index', compact( 'applicationsNumber', 'applications', 'numberNotification', 'passedTimeApplication','housesNumber', 'addServicesNumber', 'usersNumber', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

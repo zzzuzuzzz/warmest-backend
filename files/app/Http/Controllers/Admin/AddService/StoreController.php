@@ -13,12 +13,14 @@ class StoreController extends Controller
         $date = $request->validated();
         AddService::firstOrCreate($date);
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
-
-
-        return redirect()->route('addService.index', compact('questions', 'passedTime','questionsForMsg'
+        return redirect()->route('addService.index', compact('questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

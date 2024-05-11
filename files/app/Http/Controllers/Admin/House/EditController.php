@@ -31,12 +31,15 @@ class EditController extends Controller
             }
         }
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
-
-        return view('admin.house.edit', compact('house', 'categories', 'addServices', 'addServiceHousesList', 'imageHouseList', 'questions', 'passedTime','questionsForMsg'
+        return view('admin.house.edit', compact('house', 'categories', 'addServices', 'addServiceHousesList', 'imageHouseList', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

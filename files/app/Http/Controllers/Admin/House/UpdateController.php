@@ -45,12 +45,15 @@ class UpdateController extends Controller
 //            $addServicesList = ['Дополнительные услуги не выбраны'];
 //        }
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
-
-        return view('admin.house.show', compact('house', 'category', 'addServicesList', 'questions', 'passedTime','questionsForMsg'
+        return view('admin.house.show', compact('house', 'category', 'addServicesList', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

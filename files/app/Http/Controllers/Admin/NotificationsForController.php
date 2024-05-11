@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Application;
 use App\Models\Question;
 use Carbon\Carbon;
 
@@ -71,6 +72,22 @@ Class NotificationsForController {
 
 
 
+    public static function passedTimeApplication() {
+        $applications = Application::where('viewed', 'false')->get();
+        $passedTime = '';
+
+        if (count($applications) > 0) {
+            $dateFromDB = Carbon::parse($applications->last()->create);
+            $dateNow = Carbon::now();
+            $passedTime = ($dateNow->setTimezone("Europe/Moscow")->timestamp) - ($dateFromDB->timestamp-10800);
+            $passedTime = ifFunc($passedTime, $dateFromDB);
+        }
+
+        return $passedTime;
+    }
+
+
+
 
 
 
@@ -86,6 +103,12 @@ Class NotificationsForController {
 
 
 
+    public static function applications() {
+        $applications = Application::where('viewed', 'false')->get();
+
+        return $applications;
+    }
+
 
     public static function questions() {
         $questions = Question::where('viewed', 'false')->get();
@@ -97,6 +120,23 @@ Class NotificationsForController {
         $questions = Question::all();
 
         return $questions;
+    }
+
+
+    public static function numberNotification() {
+        $numberQuestions = count(self::questions());
+        $numberApplications = count(self::applications());
+        if (isset($numberQuestions)) {
+            if (isset($numberApplications)) {
+                return $numberApplications + $numberQuestions;
+            } else {
+                return $numberQuestions;
+            }
+        } elseif (isset($numberApplications)) {
+            return $numberApplications;
+        } else {
+            return 0;
+        }
     }
 
 
