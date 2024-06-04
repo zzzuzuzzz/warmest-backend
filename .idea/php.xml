@@ -237,6 +237,15 @@
       <path value="$PROJECT_DIR$/files/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/files/vendor/fruitcake/php-cors" />
       <path value="$PROJECT_DIR$/files/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/files/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/files/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/files/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/files/vendor/fig/http-message-util" />
+      <path value="$PROJECT_DIR$/files/vendor/stella-maris/clock" />
+      <path value="$PROJECT_DIR$/files/vendor/amocrm/amocrm-api-library" />
+      <path value="$PROJECT_DIR$/files/vendor/amocrm/oauth2-amocrm" />
+      <path value="$PROJECT_DIR$/files/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/files/vendor/league/oauth2-client" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />

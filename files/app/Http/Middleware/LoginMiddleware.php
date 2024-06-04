@@ -17,10 +17,13 @@ class LoginMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->user() != null) {
-            if (auth()->user()->role == 'admin') {
-                return redirect()->route('admin.main.index');
-            }
-            return $next($request);
+//            if (auth()->user()->email_verified_at) {
+                if (auth()->user()->role == 'admin') {
+                    return redirect()->route('admin.main.index');
+                }
+                return $next($request);
+//            }
+//            return view('auth.verify');
         }
         return redirect()->route('login');
     }

@@ -90,6 +90,7 @@
             </div>
             <form class="col-5" action="{{ route('site.application.store') }}" method="post">
                 @csrf
+{{--                <script>!function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},a[o+r]({id:"1352466",hash:"6b5938751cb06f9f2a39d8f50780f33c",locale:"ru"}),a[o+m]=a[o+m]||function(f,k){a[o+m].f=(a[o+m].f||[]).concat([[f,k]])}}(window,0,"amo_forms_","params","load","loaded");</script><script id="amoforms_script_1352466" async="async" charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1717171773"></script>--}}
                 <h4>Оставить заявку на обратный звонок</h4>
                 <div class="form-group mt-2">
                     <label for="name">Ваше имя</label>

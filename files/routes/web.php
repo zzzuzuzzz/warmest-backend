@@ -76,6 +76,27 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
 });
 
 
+//Route::group(['prefix' => ''], function () {
+//    Route::get('', \App\Http\Controllers\Site\IndexController::class)->name('site.index');
+//    Route::get('#about-us-block', \App\Http\Controllers\Site\AboutUsController::class)->name('site.index#about-us-block');
+//    Route::get('#our-services', \App\Http\Controllers\Site\OurServicesController::class)->name('site.index#our-services');
+//    Route::get('#house-block', \App\Http\Controllers\Site\HouseController::class)->name('site.index#house-block');
+//    Route::get('#contact-us-block', \App\Http\Controllers\Site\ContactController::class)->name('site.index#contact-us-block');
+//    Route::get('/catalog', \App\Http\Controllers\Site\CatalogController::class)->name('site.catalog');
+//    Route::post('/application/store', \App\Http\Controllers\Site\ApplicationStoreController::class)->name('site.application.store');
+//    Route::middleware(\App\Http\Middleware\LoginMiddleware::class)->group(function () {
+//        Route::group(['prefix' => '/profile'], function () {
+//            Route::get('', \App\Http\Controllers\Site\ProfileController::class)->name('site.profile');
+//            Route::get('/favorite', \App\Http\Controllers\Site\Profile\FavoriteController::class)->name('site.profile.favorite');
+//            Route::get('/faq', \App\Http\Controllers\Site\Profile\FaqController::class)->name('site.profile.faq');
+//            Route::get('/setting', \App\Http\Controllers\Site\Profile\SettingController::class)->name('site.profile.setting');
+//            Route::get('/question', \App\Http\Controllers\Site\Profile\QuestionController::class)->name('site.profile.question');
+//            Route::post('/question/store', \App\Http\Controllers\Site\Profile\QuestionStoreController::class)->name('site.profile.question.store');
+//        });
+//    });
+//});
+
+
 Route::group(['prefix' => ''], function () {
     Route::get('', \App\Http\Controllers\Site\IndexController::class)->name('site.index');
     Route::get('#about-us-block', \App\Http\Controllers\Site\AboutUsController::class)->name('site.index#about-us-block');
@@ -84,18 +105,15 @@ Route::group(['prefix' => ''], function () {
     Route::get('#contact-us-block', \App\Http\Controllers\Site\ContactController::class)->name('site.index#contact-us-block');
     Route::get('/catalog', \App\Http\Controllers\Site\CatalogController::class)->name('site.catalog');
     Route::post('/application/store', \App\Http\Controllers\Site\ApplicationStoreController::class)->name('site.application.store');
-    Route::middleware(\App\Http\Middleware\LoginMiddleware::class)->group(function () {
-        Route::group(['prefix' => '/profile'], function () {
-            Route::get('', \App\Http\Controllers\Site\ProfileController::class)->name('site.profile');
-            Route::get('/favorite', \App\Http\Controllers\Site\Profile\FavoriteController::class)->name('site.profile.favorite');
-            Route::get('/faq', \App\Http\Controllers\Site\Profile\FaqController::class)->name('site.profile.faq');
-            Route::get('/setting', \App\Http\Controllers\Site\Profile\SettingController::class)->name('site.profile.setting');
-            Route::get('/question', \App\Http\Controllers\Site\Profile\QuestionController::class)->name('site.profile.question');
-            Route::post('/question/store', \App\Http\Controllers\Site\Profile\QuestionStoreController::class)->name('site.profile.question.store');
-        });
+    Route::group(['prefix' => '/profile', 'middleware' => ['auth', 'admin', 'verified']], function () {
+        Route::get('', \App\Http\Controllers\Site\ProfileController::class)->name('site.profile');
+        Route::get('/favorite', \App\Http\Controllers\Site\Profile\FavoriteController::class)->name('site.profile.favorite');
+        Route::get('/faq', \App\Http\Controllers\Site\Profile\FaqController::class)->name('site.profile.faq');
+        Route::get('/setting', \App\Http\Controllers\Site\Profile\SettingController::class)->name('site.profile.setting');
+        Route::get('/question', \App\Http\Controllers\Site\Profile\QuestionController::class)->name('site.profile.question');
+        Route::post('/question/store', \App\Http\Controllers\Site\Profile\QuestionStoreController::class)->name('site.profile.question.store');
     });
 });
 
 
-
-Auth::routes();
+Auth::routes(['verify' => true]);
