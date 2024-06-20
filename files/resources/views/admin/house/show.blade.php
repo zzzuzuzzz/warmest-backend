@@ -109,7 +109,7 @@
                                             <table>
                                                 <tr>
                                                     <td>Категория проекта: </td>
-                                                    <td>{{ $house->category_id }}</td>
+                                                    <td>{{ $category->title }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Статус проекта: </td>

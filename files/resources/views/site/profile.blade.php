@@ -12,9 +12,9 @@
                     <li class="list-group-item border-0">
                         <a class="float-right" href="{{ route('site.profile.faq') }}">Вопрос - ответ</a>
                     </li>
-                    <li class="list-group-item border-0">
-                        <a class="float-right" href="{{ route('site.profile.setting') }}">Личный кабинет</a>
-                    </li>
+{{--                    <li class="list-group-item border-0">--}}
+{{--                        <a class="float-right" href="{{ route('site.profile.setting') }}">Личный кабинет</a>--}}
+{{--                    </li>--}}
                     <li class="list-group-item border-0">
                         <a class="float-right" href="{{ route('site.profile.question') }}">Задать вопрос</a>
                     </li>

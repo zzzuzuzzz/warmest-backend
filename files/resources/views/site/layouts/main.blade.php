@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/css/modal.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/css/profile.css') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
-    <script src="{{ asset('styles/js/index.js') }}" defer type="module"></script>
+{{--    <script src="{{ asset('styles/js/index.js') }}" defer type="module"></script>--}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -166,9 +166,6 @@
 <script type="module" defer>
     import servicesData from '{{ asset('assets/js/servicesData.js') }}';
     import slider from '{{ asset('assets/js/slider.js') }}';
-    {{--import cardsInfo from '{{ asset('assets/js/cardsInfo.js') }}'--}}
-    {{--import warmestCard from '{{ asset('assets/js/warmestCard.js') }}';--}}
-
 
     document.addEventListener('DOMContentLoaded', main);
 
@@ -193,10 +190,4 @@
             servicesData.BigSliderData
         );
     }
-
-    // let tmp = document.querySelector('.products-container')
-    // for (let item of cardsInfo) {
-    //     const card = new warmestCard.WarmestCard(item)
-    //     card.addCardTo(tmp)
-    // }
 </script>

@@ -8,7 +8,6 @@ use App\Models\User;
 class ProfileController extends Controller
 {
     public function __invoke() {
-        $user = auth()->user();
-        return view('site.profile', compact('user'));
+        return redirect()->route('site.profile.favorite');
     }
 }

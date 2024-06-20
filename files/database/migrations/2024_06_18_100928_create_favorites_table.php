@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('image_houses', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->text('image');
+            $table->foreignId('user_id')->nullable()->index()->constrained('users');
             $table->foreignId('house_id')->nullable()->index()->constrained('houses');
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('image_houses');
+        Schema::dropIfExists('favorites');
     }
 };

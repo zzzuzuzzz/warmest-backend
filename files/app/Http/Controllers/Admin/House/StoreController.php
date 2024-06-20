@@ -15,36 +15,6 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request) {
         $date = $request->validated();
 
-//        if ($date['image_one']) {
-//            $date['image_one'] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date['image_one']);
-//        }
-//        if ($date['image_two']) {
-//            $date['image_two'] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date['image_two']);
-//        }
-//        if ($date['image_three']) {
-//            $date['image_three'] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date['image_three']);
-//        }
-//        if ($date['image_four']) {
-//            $date['image_four'] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date['image_four']);
-//        }
-//        if ($date['image_facade_one']) {
-//            $date['image_facade_one'] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date['image_facade_one']);
-//        }
-//        if ($date['image_facade_two']) {
-//            $date['image_facade_two'] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date['image_facade_two']);
-//        }
-//        if ($date['image_facade_three']) {
-//            $date['image_facade_three'] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date['image_facade_three']);
-//        }
-//        if ($date['image_facade_four']) {
-//            $date['image_facade_four'] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date['image_facade_four']);
-//        }
-//        if ($date['image_plan_one']) {
-//            $date['image_plan_one'] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date['image_plan_one']);
-//        }
-//        if ($date['image_plane_two']) {
-//            $date['image_plane_two'] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date['image_plane_two']);
-//        }
         House::firstOrCreate([
             'title' => $date['title']
         ], [
@@ -63,6 +33,7 @@ class StoreController extends Controller
             'category_id' => $date['category_id'],
         ]);
 
+
         Storage::makeDirectory('public/images/' . $date['title']);
         foreach ($date['images'] as $img) {
             $imgPath = Storage::disk('public')->put('/images/' . $date['title'], $img);
@@ -72,12 +43,15 @@ class StoreController extends Controller
                 ]);
         }
 
+
         foreach ($date['add_services_ids'] as $as) {
             AddServiceHouse::firstOrCreate([
                 'add_service_id' => $as,
                 'house_id' => (House::where('title', $date['title'])->get())[0]->id
             ]);
         }
+
+
         $passedTime = NotificationsForController::passedTime();
         $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
