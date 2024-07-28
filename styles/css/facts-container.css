@@ -1,0 +1,52 @@
+@import url(/styles/css/texts.css);
+
+.facts-container {
+  padding: 10px 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px 20px;
+}
+
+.fact-title {
+  color: var(--warmest-orange);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: var(--warmest-xmedium-font-size);
+  font-weight: var(--warmest-xbig-font-weight);
+}
+
+.fact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.fact-container-v2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 10px;
+  }
+  .fact-title-v2 {
+    font-size: var(--warmest-xlarge-font-size);
+    font-weight: var(--warmest-big-font-weight);
+  }
+
+  .fact-text-v2 {
+    font-size: var(--warmest-medium-font-size);
+    font-weight: var(--warmest-small-font-weight);
+    text-align: center;;
+  }
+
+@media screen and (max-width: 993px) {
+  .facts-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .ico svg {
+    height: 78px;
+  }
+}

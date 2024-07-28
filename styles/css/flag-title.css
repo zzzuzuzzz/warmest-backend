@@ -1,0 +1,38 @@
+.flag-title-container {
+    background-color: #FAA94A;
+    padding: 5px 50px;
+    padding-right: 100px;
+    position: relative;
+  }
+
+  .triangle {
+    position: absolute;
+    border: 50px solid transparent; 
+    border-right: 60px solid #fff;
+    right: 0;
+    bottom: 0;
+  }
+
+  @media screen and (max-width: 993px) {
+    .flag-title-container {
+      padding: 5px 20px;
+      padding-right: 60px;
+    }
+
+    .triangle {
+      border: 40px solid transparent; 
+      border-right: 45px solid #fff;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .flag-title-container {
+      padding: 5px 10px;
+      padding-right: 50px;
+    }
+
+    .triangle {
+      border: 35px solid transparent; 
+      border-right: 40px solid #fff;
+    }
+  }

@@ -14,20 +14,33 @@ return new class extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
 
+            //          Общая информация об объекте, которая расположена в главной карточке
             $table->string('title');
-            $table->string('params_size');
-            $table->string('params_floors');
-            $table->string('params_length');
-            $table->string('params_width');
+            $table->integer('params_size');
+            $table->integer('params_floors');
+            $table->integer('params_length');
+            $table->integer('params_width');
+            $table->boolean('mezzanine')->default(0);
 
+            $table->integer('main_price');
+            $table->integer('add_price');
+            $table->integer('credit');
+
+            //          Описание и прочая дополнительная информация
             $table->text('description');
 
-            $table->string('main_price');
-            $table->string('add_price');
-            $table->string('credit_info');
+            $table->string('article');
+            $table->boolean('finishing')->default(0);
+            $table->integer('number_of_bedrooms');
+            $table->boolean('electricity')->default(0);
+            $table->boolean('water')->default(0);
+            $table->boolean('gas')->default(0);
 
+
+            //          Служебная информация для фильтрации объектов
             $table->boolean('is_published')->default(0);
-            $table->foreignId('category_id')->nullable()->index()->constrained('categories');
+            $table->foreignId('floor_category_id')->index()->constrained('floor_categories');
+            $table->foreignId('material_category_id')->index()->constrained('material_categories');
         });
     }
 

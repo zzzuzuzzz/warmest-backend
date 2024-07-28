@@ -47,7 +47,7 @@
                             @endif
                         </div>
                         <div class="modal-body">
-                            <div class="modal-info-container" style="display: flex; flex-direction: row; justify-content: space-between"">
+                            <div class="modal-info-container" style="display: flex; flex-direction: row; justify-content: space-between">
                                 <div style="display: grid; width: fit-content">
                                     <div class="swiper" style="width: 100%">
                                         <!-- Additional required wrapper -->

@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AddServices\UpdateRequest;
 use App\Models\AddService;
 use App\Models\AddServiceHouse;
-use App\Models\Category;
+use App\Models\MaterialCategory;
 use App\Models\House;
 use App\Models\ImageHouse;
 use Illuminate\Support\Facades\Storage;
@@ -54,7 +54,7 @@ class UpdateController extends Controller
         $house->update($date);
 
 
-        $category = Category::find($house->category_id);
+        $category = MaterialCategory::find($house->category_id);
         $images = [];
         foreach (ImageHouse::where('house_id', $house->id)->get() as $img) {
             $images[] = $img->image;

@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class AboutUsController extends Controller
 {
     public function __invoke() {
-        return view('site.welcome#about-us-block');
+        return view('site.about');
     }
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
 use App\Models\AddService;
 use App\Models\AddServiceHouse;
-use App\Models\Category;
+use App\Models\MaterialCategory;
 use App\Models\House;
 use App\Models\ImageHouse;
 
@@ -14,7 +14,7 @@ class EditController extends Controller
 {
     public function __invoke(House $house) {
 
-        $categories = Category::all();
+        $categories = MaterialCategory::all();
         $addServices = AddService::all();
         $addServiceHouses = AddServiceHouse::where('house_id', $house->id)->get();
         $addServiceHousesList = [];

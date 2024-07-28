@@ -7,14 +7,24 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
     Route::group(['prefix' => '/admin'], function () {
         Route::get('/', \App\Http\Controllers\Admin\AdminIndexController::class)->name('admin.main.index');
 
-        Route::group(['prefix' => '/categories'], function () {
-            Route::get('/', \App\Http\Controllers\Admin\Category\IndexController::class)->name('category.index');
-            Route::get('/create', \App\Http\Controllers\Admin\Category\CreateController::class)->name('category.create');
-            Route::post('/', \App\Http\Controllers\Admin\Category\StoreController::class)->name('category.store');
-            Route::get('/{category}/edit', \App\Http\Controllers\Admin\Category\EditController::class)->name('category.edit');
-            Route::get('/{category}', \App\Http\Controllers\Admin\Category\ShowController::class)->name('category.show');
-            Route::patch('/{category}', \App\Http\Controllers\Admin\Category\UpdateController::class)->name('category.update');
-            Route::delete('/{category}', \App\Http\Controllers\Admin\Category\DeleteController::class)->name('category.delete');
+        Route::group(['prefix' => '/floorCategories'], function () {
+            Route::get('/', \App\Http\Controllers\Admin\FloorCategory\IndexController::class)->name('floorCategory.index');
+            Route::get('/create', \App\Http\Controllers\Admin\FloorCategory\CreateController::class)->name('floorCategory.create');
+            Route::post('/', \App\Http\Controllers\Admin\FloorCategory\StoreController::class)->name('floorCategory.store');
+            Route::get('/{category}/edit', \App\Http\Controllers\Admin\FloorCategory\EditController::class)->name('floorCategory.edit');
+            Route::get('/{category}', \App\Http\Controllers\Admin\FloorCategory\ShowController::class)->name('floorCategory.show');
+            Route::patch('/{category}', \App\Http\Controllers\Admin\FloorCategory\UpdateController::class)->name('floorCategory.update');
+            Route::delete('/{category}', \App\Http\Controllers\Admin\FloorCategory\DeleteController::class)->name('floorCategory.delete');
+        });
+
+        Route::group(['prefix' => '/materialCategories'], function () {
+            Route::get('/', \App\Http\Controllers\Admin\MaterialCategory\IndexController::class)->name('materialCategory.index');
+            Route::get('/create', \App\Http\Controllers\Admin\MaterialCategory\CreateController::class)->name('materialCategory.create');
+            Route::post('/', \App\Http\Controllers\Admin\MaterialCategory\StoreController::class)->name('materialCategory.store');
+            Route::get('/{category}/edit', \App\Http\Controllers\Admin\MaterialCategory\EditController::class)->name('materialCategory.edit');
+            Route::get('/{category}', \App\Http\Controllers\Admin\MaterialCategory\ShowController::class)->name('materialCategory.show');
+            Route::patch('/{category}', \App\Http\Controllers\Admin\MaterialCategory\UpdateController::class)->name('materialCategory.update');
+            Route::delete('/{category}', \App\Http\Controllers\Admin\MaterialCategory\DeleteController::class)->name('materialCategory.delete');
         });
 
         Route::group(['prefix' => '/addService'], function () {
@@ -75,35 +85,14 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
     });
 });
 
-
-//Route::group(['prefix' => ''], function () {
-//    Route::get('', \App\Http\Controllers\Site\IndexController::class)->name('site.index');
-//    Route::get('#about-us-block', \App\Http\Controllers\Site\AboutUsController::class)->name('site.index#about-us-block');
-//    Route::get('#our-services', \App\Http\Controllers\Site\OurServicesController::class)->name('site.index#our-services');
-//    Route::get('#house-block', \App\Http\Controllers\Site\HouseController::class)->name('site.index#house-block');
-//    Route::get('#contact-us-block', \App\Http\Controllers\Site\ContactController::class)->name('site.index#contact-us-block');
-//    Route::get('/catalog', \App\Http\Controllers\Site\CatalogController::class)->name('site.catalog');
-//    Route::post('/application/store', \App\Http\Controllers\Site\ApplicationStoreController::class)->name('site.application.store');
-//    Route::middleware(\App\Http\Middleware\LoginMiddleware::class)->group(function () {
-//        Route::group(['prefix' => '/profile'], function () {
-//            Route::get('', \App\Http\Controllers\Site\ProfileController::class)->name('site.profile');
-//            Route::get('/favorite', \App\Http\Controllers\Site\Profile\FavoriteController::class)->name('site.profile.favorite');
-//            Route::get('/faq', \App\Http\Controllers\Site\Profile\FaqController::class)->name('site.profile.faq');
-//            Route::get('/setting', \App\Http\Controllers\Site\Profile\SettingController::class)->name('site.profile.setting');
-//            Route::get('/question', \App\Http\Controllers\Site\Profile\QuestionController::class)->name('site.profile.question');
-//            Route::post('/question/store', \App\Http\Controllers\Site\Profile\QuestionStoreController::class)->name('site.profile.question.store');
-//        });
-//    });
-//});
-
-
 Route::group(['prefix' => ''], function () {
     Route::get('', \App\Http\Controllers\Site\IndexController::class)->name('site.index');
-    Route::get('#about-us-block', \App\Http\Controllers\Site\AboutUsController::class)->name('site.index#about-us-block');
+    Route::get('/about', \App\Http\Controllers\Site\AboutUsController::class)->name('site.about');
+    Route::get('/credit', \App\Http\Controllers\Site\CreditController::class)->name('site.credit');
     Route::get('#our-services', \App\Http\Controllers\Site\OurServicesController::class)->name('site.index#our-services');
     Route::get('#house-block', \App\Http\Controllers\Site\HouseController::class)->name('site.index#house-block');
-    Route::get('#contact-us-block', \App\Http\Controllers\Site\ContactController::class)->name('site.index#contact-us-block');
-    Route::get('/catalog', \App\Http\Controllers\Site\CatalogController::class)->name('site.catalog');
+    Route::get('/catalog/{request?}', \App\Http\Controllers\Site\CatalogController::class)->name('site.catalog');
+    Route::get('/baths', \App\Http\Controllers\Site\BathsController::class)->name('site.baths');
     Route::post('/application/store', \App\Http\Controllers\Site\ApplicationStoreController::class)->name('site.application.store');
     Route::group(['prefix' => '/profile', 'middleware' => ['auth', 'admin', 'verified']], function () {
         Route::get('', \App\Http\Controllers\Site\ProfileController::class)->name('site.profile');

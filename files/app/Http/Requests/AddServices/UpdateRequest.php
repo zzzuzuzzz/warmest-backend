@@ -23,23 +23,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'params_size' => 'required|string',
-            'params_floors' => 'required|string',
-            'params_length' => 'required|string',
-            'params_width' => 'required|string',
-
-            'description' => 'required|string',
-
-            'main_price' => 'required|string',
-            'add_price' => 'required|string',
-            'credit_info' => 'required|string',
-
-            'images' => 'nullable',
-
-            'is_published' => 'nullable',
-            'category_id' => 'nullable',
-            'add_services_ids' => 'nullable',
-            'deleteImg' => 'nullable'
+            'price' => 'required|integer'
         ];
     }
 }

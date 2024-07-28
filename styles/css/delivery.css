@@ -1,0 +1,15 @@
+.delivery-container {
+    padding: 10px 50px;
+    align-items: center;
+}
+
+@media screen and (max-width: 994px) {
+    .delivery-container {
+        padding: 10px 25px;
+        text-align: center;
+    }
+
+    .delivery-img {
+        display: none;
+    }
+}

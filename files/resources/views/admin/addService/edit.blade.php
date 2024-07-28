@@ -30,7 +30,7 @@
                         <input type="text" name="title" value="{{ $addService->title }}" class="form-control" placeholder="Наименование">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="price" value="{{ $addService->price }}" class="form-control" placeholder="Цена">
+                        <input type="number" name="price" value="{{ $addService->price }}" class="form-control" placeholder="Цена">
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Редактировать">

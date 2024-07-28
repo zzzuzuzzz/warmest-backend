@@ -14,7 +14,6 @@ class StoreController extends Controller
 {
     public function __invoke(StoreRequest $request) {
         $date = $request->validated();
-
         House::firstOrCreate([
             'title' => $date['title']
         ], [
@@ -23,14 +22,23 @@ class StoreController extends Controller
             'params_floors' =>  $date['params_floors'],
             'params_length' =>  $date['params_length'],
             'params_width' =>  $date['params_width'],
-
-            'description' =>  $date['description'],
-
+            'mezzanine' => $date['mezzanine'],
             'main_price' =>  $date['main_price'],
             'add_price' =>  $date['add_price'],
-            'credit_info' =>  $date['credit_info'],
+            'credit' => $date['credit_info'],
 
-            'category_id' => $date['category_id'],
+
+            'description' =>  $date['description'],
+            'article' => $date['article'],
+            'finishing' => $date['finishing'],
+            'number_of_bedrooms' => $date['number_of_bedrooms'],
+            'electricity' => $date['electricity'],
+            'water' => $date['water'],
+            'gas' => $date['gas'],
+
+
+            'floor_category_id' => $date['floor_category_id'],
+            'material_category_id' => $date['material_category_id'],
         ]);
 
 

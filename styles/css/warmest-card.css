@@ -1,0 +1,37 @@
+.house-img-container {
+    border-radius: 25px;
+    border: 3px solid #A1A1A1;
+  }
+  .house-sizes {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .price-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .warmest-demo-card {
+    display: flex;
+    flex-direction: column;
+    font-size: calc(var(--warmest-medium-font-size));
+  }
+  .warmest-card-title {
+    font-weight: var(--warmest-big-font-weight);
+  }
+
+  .warmest-card-header, .warmest-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .warmest-card-footer {
+    align-items: end;
+  }
+
+  .price-left {
+    align-items: start !important;
+    text-align: left;
+  }

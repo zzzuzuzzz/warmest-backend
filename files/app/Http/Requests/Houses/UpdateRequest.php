@@ -27,18 +27,25 @@ class UpdateRequest extends FormRequest
             'params_floors' => 'required|string',
             'params_length' => 'required|string',
             'params_width' => 'required|string',
+            'mezzanine' => 'required|integer',
+            'main_price' => 'required|integer',
+            'add_price' => 'required|integer',
+            'credit' => 'required|integer',
 
             'description' => 'required|string',
 
-            'main_price' => 'required|string',
-            'add_price' => 'required|string',
-            'credit_info' => 'required|string',
+            'article' => 'required|string',
+            'finishing' => 'required|integer',
+            'number_of_bedrooms' => 'required|integer',
+            'electricity' => 'required|integer',
+            'water' => 'required|integer',
+            'gas' => 'required|integer',
 
             'images' => 'nullable',
-            'deleteImg' => 'nullable',
 
             'is_published' => 'nullable',
-            'category_id' => 'nullable',
+            'floor_category_id' => 'required|integer',
+            'material_category_id' => 'required|integer',
             'add_services_ids' => 'nullable'
         ];
     }
