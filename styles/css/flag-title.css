@@ -1,5 +1,6 @@
 .flag-title-container {
     background-color: #FAA94A;
+    overflow: hidden;
     padding: 5px 50px;
     padding-right: 100px;
     position: relative;

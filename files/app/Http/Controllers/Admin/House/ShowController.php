@@ -14,7 +14,7 @@ class ShowController extends Controller
 {
     public function __invoke(House $house) {
 
-        $category = MaterialCategory::find($house->category_id);
+//        $category = MaterialCategory::find($house->category_id);
 
         $images = [];
         foreach (ImageHouse::where('house_id', $house->id)->get() as $img) {
@@ -32,7 +32,7 @@ class ShowController extends Controller
         $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
         $applicationsForMsg = NotificationsForController::applications();
-        return view('admin.house.show', compact('house', 'category', 'images', 'addServices', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
+        return view('admin.house.show', compact('house', 'images', 'addServices', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

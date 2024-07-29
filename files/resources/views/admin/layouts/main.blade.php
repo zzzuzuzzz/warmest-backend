@@ -39,74 +39,74 @@
         </ul>
 
         <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    @if(count($questions) > 0)
-                        <span class="badge badge-danger navbar-badge">{{ count($questions) }}</span>
-                    @endif
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        @if(count($questions) > 0)
-                            @foreach($questionsForMsg as $question)
-                                <div class="media">
-                                    <i class="fas fa-envelope mr-2"></i>
-                                    <div class="media-body">
-                                        <h3 class="dropdown-item-title">
-                                            {{ $question->name }}
-                                        </h3>
-                                        <p class="text-sm">{{ $question->theme }}</p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @else
-                            <i class="fas fa-envelope mr-2"></i>
-                            Нет новых сообщений
-                        @endif
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ route('question.index') }}" class="dropdown-item dropdown-footer">Посмотреть все сообщения</a>
-                </div>
-            </li>
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    @if($numberNotification > 0)
-                        <span class="badge badge-warning navbar-badge">{{ $numberNotification }}</span>
-                    @endif
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">{{ $numberNotification }} Уведомлений</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ route('question.index') }}" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i>
-                        @if(isset($questions))
-                            {{ count($questions) }} новых сообщений
-                            <span class="float-right text-muted text-sm">{{ $passedTime }}</span>
-                        @else
-                            Нет новых сообщений
-                        @endif
-                    </a>
+{{--        <ul class="navbar-nav ml-auto">--}}
+{{--            <!-- Messages Dropdown Menu -->--}}
+{{--            <li class="nav-item dropdown">--}}
+{{--                <a class="nav-link" data-toggle="dropdown" href="#">--}}
+{{--                    <i class="far fa-comments"></i>--}}
+{{--                    @if(count($questions) > 0)--}}
+{{--                        <span class="badge badge-danger navbar-badge">{{ count($questions) }}</span>--}}
+{{--                    @endif--}}
+{{--                </a>--}}
+{{--                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">--}}
+{{--                    <a href="#" class="dropdown-item">--}}
+{{--                        <!-- Message Start -->--}}
+{{--                        @if(count($questions) > 0)--}}
+{{--                            @foreach($questionsForMsg as $question)--}}
+{{--                                <div class="media">--}}
+{{--                                    <i class="fas fa-envelope mr-2"></i>--}}
+{{--                                    <div class="media-body">--}}
+{{--                                        <h3 class="dropdown-item-title">--}}
+{{--                                            {{ $question->name }}--}}
+{{--                                        </h3>--}}
+{{--                                        <p class="text-sm">{{ $question->theme }}</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            @endforeach--}}
+{{--                        @else--}}
+{{--                            <i class="fas fa-envelope mr-2"></i>--}}
+{{--                            Нет новых сообщений--}}
+{{--                        @endif--}}
+{{--                    </a>--}}
+{{--                    <div class="dropdown-divider"></div>--}}
+{{--                    <div class="dropdown-divider"></div>--}}
+{{--                    <a href="{{ route('question.index') }}" class="dropdown-item dropdown-footer">Посмотреть все сообщения</a>--}}
+{{--                </div>--}}
+{{--            </li>--}}
+{{--            <!-- Notifications Dropdown Menu -->--}}
+{{--            <li class="nav-item dropdown">--}}
+{{--                <a class="nav-link" data-toggle="dropdown" href="#">--}}
+{{--                    <i class="far fa-bell"></i>--}}
+{{--                    @if($numberNotification > 0)--}}
+{{--                        <span class="badge badge-warning navbar-badge">{{ $numberNotification }}</span>--}}
+{{--                    @endif--}}
+{{--                </a>--}}
+{{--                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">--}}
+{{--                    <span class="dropdown-item dropdown-header">{{ $numberNotification }} Уведомлений</span>--}}
+{{--                    <div class="dropdown-divider"></div>--}}
+{{--                    <a href="{{ route('question.index') }}" class="dropdown-item">--}}
+{{--                        <i class="fas fa-envelope mr-2"></i>--}}
+{{--                        @if(isset($questions))--}}
+{{--                            {{ count($questions) }} новых сообщений--}}
+{{--                            <span class="float-right text-muted text-sm">{{ $passedTime }}</span>--}}
+{{--                        @else--}}
+{{--                            Нет новых сообщений--}}
+{{--                        @endif--}}
+{{--                    </a>--}}
 
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ route('application.index') }}" class="dropdown-item">
-                        <i class="fas fa-bell mr-2"></i>
-                        @if(isset($applications))
-                            {{ count($applications) }} новых заявок
-                            <span class="float-right text-muted text-sm">{{ $passedTimeApplication }}</span>
-                        @else
-                            Нет новых заявок
-                        @endif
-                    </a>
-                </div>
-            </li>
-        </ul>
+{{--                    <div class="dropdown-divider"></div>--}}
+{{--                    <a href="{{ route('application.index') }}" class="dropdown-item">--}}
+{{--                        <i class="fas fa-bell mr-2"></i>--}}
+{{--                        @if(isset($applications))--}}
+{{--                            {{ count($applications) }} новых заявок--}}
+{{--                            <span class="float-right text-muted text-sm">{{ $passedTimeApplication }}</span>--}}
+{{--                        @else--}}
+{{--                            Нет новых заявок--}}
+{{--                        @endif--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </li>--}}
+{{--        </ul>--}}
     </nav>
     <!-- /.navbar -->
 
@@ -123,12 +123,12 @@
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="{{ route('application.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-bell"></i>
-                            <p>Заявки</p>
-                        </a>
-                    </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="{{ route('application.index') }}" class="nav-link">--}}
+{{--                            <i class="nav-icon fas fa-bell"></i>--}}
+{{--                            <p>Заявки</p>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                     <li class="nav-item">
                         <a href="{{ route('house.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-home"></i>
@@ -165,18 +165,18 @@
                             <p>Пользователи</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('faq.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-question"></i>
-                            <p>Вопрос - ответ</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('question.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-envelope"></i>
-                            <p>Сообщения</p>
-                        </a>
-                    </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="{{ route('faq.index') }}" class="nav-link">--}}
+{{--                            <i class="nav-icon fas fa-question"></i>--}}
+{{--                            <p>Вопрос - ответ</p>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="{{ route('question.index') }}" class="nav-link">--}}
+{{--                            <i class="nav-icon fas fa-envelope"></i>--}}
+{{--                            <p>Сообщения</p>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

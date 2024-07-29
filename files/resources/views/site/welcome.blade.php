@@ -118,159 +118,48 @@
             </div>
         </div>
     </div>
-    <div id="info-block" class="main-page-block">
-        <a href="#">
-            <div class="page-link-container">
-                <span>Расскажем о строительстве с ипотекой и мат. капиталом</span>
-                <div>
-                    <svg width="19" height="29" viewBox="0 0 19 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1.32592 29C1.06361 29 0.807209 28.9361 0.589141 28.8164C0.371072 28.6967 0.201134 28.5267 0.100817 28.3277C0.000499394 28.1288 -0.0256906 27.9099 0.0255593 27.6988C0.0768092 27.4876 0.203196 27.2937 0.388738 27.1415L15.7984 14.4931L0.388738 1.84479C0.147158 1.63949 0.0134839 1.36452 0.0165056 1.0791C0.0195272 0.793684 0.159003 0.52066 0.404893 0.318832C0.650783 0.117004 0.983411 0.00252134 1.33114 4.11504e-05C1.67887 -0.00243904 2.01387 0.107282 2.26399 0.305571L18.6117 13.7239C18.8603 13.928 19 14.2048 19 14.4935C19 14.7821 18.8603 15.059 18.6117 15.2631L2.26399 28.6814C2.14078 28.7825 1.99452 28.8626 1.83357 28.9173C1.67261 28.972 1.50011 29.0001 1.32592 29Z"
-                            fill="#472B0B"/>
-                    </svg>
-                </div>
-            </div>
-        </a>
-    </div>
+{{--    <div id="info-block" class="main-page-block">--}}
+{{--        <a href="#">--}}
+{{--            <div class="page-link-container">--}}
+{{--                <span>Расскажем о строительстве с ипотекой и мат. капиталом</span>--}}
+{{--                <div>--}}
+{{--                    <svg width="19" height="29" viewBox="0 0 19 29" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                        <path--}}
+{{--                            d="M1.32592 29C1.06361 29 0.807209 28.9361 0.589141 28.8164C0.371072 28.6967 0.201134 28.5267 0.100817 28.3277C0.000499394 28.1288 -0.0256906 27.9099 0.0255593 27.6988C0.0768092 27.4876 0.203196 27.2937 0.388738 27.1415L15.7984 14.4931L0.388738 1.84479C0.147158 1.63949 0.0134839 1.36452 0.0165056 1.0791C0.0195272 0.793684 0.159003 0.52066 0.404893 0.318832C0.650783 0.117004 0.983411 0.00252134 1.33114 4.11504e-05C1.67887 -0.00243904 2.01387 0.107282 2.26399 0.305571L18.6117 13.7239C18.8603 13.928 19 14.2048 19 14.4935C19 14.7821 18.8603 15.059 18.6117 15.2631L2.26399 28.6814C2.14078 28.7825 1.99452 28.8626 1.83357 28.9173C1.67261 28.972 1.50011 29.0001 1.32592 29Z"--}}
+{{--                            fill="#472B0B"/>--}}
+{{--                    </svg>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </a>--}}
+{{--    </div>--}}
     <div id="catalog-intro" class="main-page-block">
         <div class="warmest-grid-container">
-            <div class="warmest-demo-card">
-                <div class="warmest-card-title">Ванкувер</div>
-                <div class="house-sizes">
-                    <span class="square">125 м²</span>
-                    <span class="size text-small">9X8м</span>
-                </div>
-                <div class="house-img-container">
-                    <img class="img-fluid"
-                         src="{{ asset('assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}"
-                         alt="Фотография">
-                </div>
-                <div class="price-container">
-                    <div>
-                        <span>от</span>
-                        <span style="color: var(--warmest-orange)">5 284 600</span>
-                        <span style="color: var(--warmest-orange)">руб</span>
+            @foreach($housesList as $house)
+                @if($house->is_published == 1)
+                    <div class="warmest-demo-card">
+                        <div class="warmest-card-title">{{ $house->title }}</div>
+                        <div class="house-sizes">
+                            <span class="square">{{ $house->params_size }} м²</span>
+                            <span class="size text-small">{{ $house->params_length }}X{{ $house->params_width }}м</span>
+                        </div>
+                        <div class="house-img-container">
+                            <img src="/storage/{{ $house->images[0] }}" class="img-fluid">
+                        </div>
+                        <div class="price-container">
+                            <div>
+                                <span>от</span>
+                                <span style="color: var(--warmest-orange)">{{ $house->main_price }}</span>
+                                <span style="color: var(--warmest-orange)">руб</span>
+                            </div>
+                            <div class="text-small">
+                                <span>В ипотеку - от</span>
+                                <span>{{ $house->credit }}</span>
+                                <span>руб./мес.</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-small">
-                        <span>В ипотеку - от</span>
-                        <span>35 000</span>
-                        <span>руб./мес.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="warmest-demo-card">
-                <div class="warmest-card-title">Торонто</div>
-                <div class="house-sizes">
-                    <span class="square">120 м²</span>
-                    <span class="size text-small">8.5X7.5м</span>
-                </div>
-                <div class="house-img-container">
-                    <img class="img-fluid"
-                         src="{{ asset('assets/img/houses/Нордик_Шотландский_Кирпич/Нордик_Шотландский_Кирпич_01.png') }}"
-                         alt="Фотография">
-                </div>
-                <div class="price-container">
-                    <div>
-                        <span>от</span>
-                        <span style="color: var(--warmest-orange)">4 678 400</span>
-                        <span style="color: var(--warmest-orange)">руб</span>
-                    </div>
-                    <div class="text-small">
-                        <span>В ипотеку - от</span>
-                        <span>35 000</span>
-                        <span>руб./мес.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="warmest-demo-card">
-                <div class="warmest-card-title">Виннипег</div>
-                <div class="house-sizes">
-                    <span class="square">173 м²</span>
-                    <span class="size text-small">10X9.5м</span>
-                </div>
-                <div class="house-img-container">
-                    <img class="img-fluid" src="{{ asset('assets/img/houses/Проект-1_Голубой/Проект-1_Голубой_010000.png') }}" alt="Фотография">
-                </div>
-                <div class="price-container">
-                    <div>
-                        <span>от</span>
-                        <span style="color: var(--warmest-orange)">6 556 400</span>
-                        <span style="color: var(--warmest-orange)">руб</span>
-                    </div>
-                    <div class="text-small">
-                        <span>В ипотеку - от</span>
-                        <span>35 000</span>
-                        <span>руб./мес.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="warmest-demo-card">
-                <div class="warmest-card-title">Брамптон</div>
-                <div class="house-sizes">
-                    <span class="square">150 м²</span>
-                    <span class="size text-small">9X9м</span>
-                </div>
-                <div class="house-img-container">
-                    <img class="img-fluid" src="{{ asset('assets/img/houses/София/София_Атакама_Кирпич_010000.png') }}" alt="Фотография">
-                </div>
-                <div class="price-container">
-                    <div>
-                        <span>от</span>
-                        <span style="color: var(--warmest-orange)">5 712 200</span>
-                        <span style="color: var(--warmest-orange)">руб</span>
-                    </div>
-                    <div class="text-small">
-                        <span>В ипотеку - от</span>
-                        <span>35 000</span>
-                        <span>руб./мес.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="warmest-demo-card">
-                <div class="warmest-card-title">Оттава</div>
-                <div class="house-sizes">
-                    <span class="square">117 м²</span>
-                    <span class="size text-small">8X8м</span>
-                </div>
-                <div class="house-img-container">
-                    <img class="img-fluid"
-                         src="{{ asset('/assets/img/houses/Ногинск_Терракотовый_Кирпич/Ногинск_Терракотовый_Кирпич_010000.png') }}" alt="Фотография">
-                </div>
-                <div class="price-container">
-                    <div>
-                        <span>от</span>
-                        <span style="color: var(--warmest-orange)">4 697 150</span>
-                        <span style="color: var(--warmest-orange)">руб</span>
-                    </div>
-                    <div class="text-small">
-                        <span>В ипотеку - от</span>
-                        <span>35 000</span>
-                        <span>руб./мес.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="warmest-demo-card">
-                <div class="warmest-card-title">Эдмонион</div>
-                <div class="house-sizes">
-                    <span class="square">157 м²</span>
-                    <span class="size text-small">11X9.2м</span>
-                </div>
-                <div class="house-img-container">
-                    <img class="img-fluid" src="{{ asset('/assets/img/houses/Мария/Мария_V1_01.png') }}" alt="Фотография">
-                </div>
-                <div class="price-container">
-                    <div>
-                        <span>от</span>
-                        <span style="color: var(--warmest-orange)">5 969 000</span>
-                        <span style="color: var(--warmest-orange)">руб</span>
-                    </div>
-                    <div class="text-small">
-                        <span>В ипотеку - от</span>
-                        <span>35 000</span>
-                        <span>руб./мес.</span>
-                    </div>
-                </div>
-            </div>
+                @endif
+            @endforeach
         </div>
         <div style="display: flex; justify-content: center; margin-top: 50px;">
             <a class="warmest-btn" href="{{ route('site.catalog') }}"
@@ -335,122 +224,122 @@
             </div>
         </div>
     </div>
-    <div id="invest-with-warmest" class="main-page-block">
-        <div class="warmest-padding warmest-container" style="flex-direction: column;">
-            <div class="title" style="display: block; flex-direction: row; width: auto; margin-bottom: 10px;">
-                <span>Инвестируй с </span><span
-                    style="color: var(--warmest-orange); font-weight: var(--warmest-xbig-font-weight);">WARMEST</span>
-            </div>
-            <div class="invest-container">
-                <div class="warmest-demo-card" style="width: 100%;">
-                    <div class="house-img-container">
-                        <img class="img-fluid"
-                             src="{{ asset('/assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}" alt="Фотография">
-                        <div style="padding: 10px;">
-                <span class='title' style="color: var(--warmest-orange); width: auto; align-items: flex-start;">Готовое
-                  решение для вас</span>
-                            <span style="color: var(--warmest-orange)">проект дома + земельный участок</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="invest-grid warmest-grid-container" style="padding: 0; width: 100%;">
-                    <div class="warmest-demo-card">
-                        <div class="house-img-container">
-                            <img class="img-fluid"
-                                 src="{{ asset('/assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}" alt="Фотография">
-                        </div>
-                        <div class="price-container" style="align-items: start;">
-                            <div>
-                                <span style="color: var(--warmest-orange)">Доходность 30%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="warmest-demo-card">
-                        <div class="house-img-container">
-                            <img class="img-fluid"
-                                 src="{{ asset('/assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}" alt="Фотография">
-                        </div>
-                        <div class="price-container" style="align-items: start;">
-                            <div>
-                                <span style="color: var(--warmest-orange)">Доходность 30%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="warmest-demo-card">
-                        <div class="house-img-container">
-                            <img class="img-fluid"
-                                 src="{{ asset('/assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}" alt="Фотография">
-                        </div>
-                        <div class="price-container" style="align-items: start;">
-                            <div>
-                                <span style="color: var(--warmest-orange)">Доходность 30%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="warmest-demo-card">
-                        <div class="house-img-container">
-                            <img class="img-fluid"
-                                 src="{{ asset('/assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}" alt="Фотография">
-                        </div>
-                        <div class="price-container" style="align-items: start;">
-                            <div>
-                                <span style="color: var(--warmest-orange)">Доходность 30%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div style="align-self: center; margin-top: 50px;">
-                <a class="warmest-btn" href="{{ route('site.catalog') }}" style="width: fit-content; text-decoration: none; cursor: pointer;">
-                    <span>Смотреть все</span>
-                    <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M0.585813 16.3903C0.46992 16.3903 0.356637 16.3541 0.260291 16.2865C0.163945 16.2189 0.088864 16.1228 0.0445423 16.0103C0.00022064 15.8979 -0.0113505 15.7742 0.0112925 15.6548C0.0339354 15.5355 0.0897751 15.4259 0.17175 15.3399L6.97995 8.19126L0.17175 1.04264C0.0650167 0.92661 0.00595739 0.771201 0.0072924 0.609888C0.00862741 0.448576 0.07025 0.294268 0.178888 0.180198C0.287525 0.0661286 0.434485 0.00142502 0.588116 2.32575e-05C0.741747 -0.0013785 0.889757 0.0606336 1.00027 0.172704L8.22292 7.75649C8.33277 7.87187 8.39448 8.02833 8.39448 8.19146C8.39448 8.3546 8.33277 8.51106 8.22292 8.62643L1.00027 16.2102C0.94583 16.2673 0.88121 16.3126 0.810097 16.3435C0.738985 16.3744 0.662772 16.3903 0.585813 16.3903Z"
-                            fill="white"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div id="consult-block" class="main-page-block">
-        <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <div class="page-link-container">
-                <span>Оставить заявку на консультацию</span>
-                <div>
-                    <svg width="19" height="29" viewBox="0 0 19 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1.32592 29C1.06361 29 0.807209 28.9361 0.589141 28.8164C0.371072 28.6967 0.201134 28.5267 0.100817 28.3277C0.000499394 28.1288 -0.0256906 27.9099 0.0255593 27.6988C0.0768092 27.4876 0.203196 27.2937 0.388738 27.1415L15.7984 14.4931L0.388738 1.84479C0.147158 1.63949 0.0134839 1.36452 0.0165056 1.0791C0.0195272 0.793684 0.159003 0.52066 0.404893 0.318832C0.650783 0.117004 0.983411 0.00252134 1.33114 4.11504e-05C1.67887 -0.00243904 2.01387 0.107282 2.26399 0.305571L18.6117 13.7239C18.8603 13.928 19 14.2048 19 14.4935C19 14.7821 18.8603 15.059 18.6117 15.2631L2.26399 28.6814C2.14078 28.7825 1.99452 28.8626 1.83357 28.9173C1.67261 28.972 1.50011 29.0001 1.32592 29Z"
-                            fill="#472B0B"/>
-                    </svg>
-                </div>
-            </div>
-        </a>
-        <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" style="color: var(--warmest-orange)" id="exampleModalLabel">Заполните
-                            форму и наш менеджер свяжется с вами:</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <div>
-                                <input type="text" placeholder="Ваше имя" class="form-control">
-                                <input type="text" placeholder="Телефон" class="form-control">
-                            </div>
-                            <textarea placeholder="Сообщение" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div>
-                            <span>Нажимая кнопку “Отправить”, я даю согласие на обработку персональных данных.</span>
-                            <button type="button" class="warmest-btn">Отправить</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div id="invest-with-warmest" class="main-page-block">--}}
+{{--        <div class="warmest-padding warmest-container" style="flex-direction: column;">--}}
+{{--            <div class="title" style="display: block; flex-direction: row; width: auto; margin-bottom: 10px;">--}}
+{{--                <span>Инвестируй с </span><span--}}
+{{--                    style="color: var(--warmest-orange); font-weight: var(--warmest-xbig-font-weight);">WARMEST</span>--}}
+{{--            </div>--}}
+{{--            <div class="invest-container">--}}
+{{--                <div class="warmest-demo-card" style="width: 100%;">--}}
+{{--                    <div class="house-img-container">--}}
+{{--                        <img class="img-fluid"--}}
+{{--                             src="{{ asset('/assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}" alt="Фотография">--}}
+{{--                        <div style="padding: 10px;">--}}
+{{--                <span class='title' style="color: var(--warmest-orange); width: auto; align-items: flex-start;">Готовое--}}
+{{--                  решение для вас</span>--}}
+{{--                            <span style="color: var(--warmest-orange)">проект дома + земельный участок</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="invest-grid warmest-grid-container" style="padding: 0; width: 100%;">--}}
+{{--                    <div class="warmest-demo-card">--}}
+{{--                        <div class="house-img-container">--}}
+{{--                            <img class="img-fluid"--}}
+{{--                                 src="{{ asset('/assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}" alt="Фотография">--}}
+{{--                        </div>--}}
+{{--                        <div class="price-container" style="align-items: start;">--}}
+{{--                            <div>--}}
+{{--                                <span style="color: var(--warmest-orange)">Доходность 30%</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="warmest-demo-card">--}}
+{{--                        <div class="house-img-container">--}}
+{{--                            <img class="img-fluid"--}}
+{{--                                 src="{{ asset('/assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}" alt="Фотография">--}}
+{{--                        </div>--}}
+{{--                        <div class="price-container" style="align-items: start;">--}}
+{{--                            <div>--}}
+{{--                                <span style="color: var(--warmest-orange)">Доходность 30%</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="warmest-demo-card">--}}
+{{--                        <div class="house-img-container">--}}
+{{--                            <img class="img-fluid"--}}
+{{--                                 src="{{ asset('/assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}" alt="Фотография">--}}
+{{--                        </div>--}}
+{{--                        <div class="price-container" style="align-items: start;">--}}
+{{--                            <div>--}}
+{{--                                <span style="color: var(--warmest-orange)">Доходность 30%</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="warmest-demo-card">--}}
+{{--                        <div class="house-img-container">--}}
+{{--                            <img class="img-fluid"--}}
+{{--                                 src="{{ asset('/assets/img/houses/Пущино_Готический_Кирпич/Пущино_Готический_Кирпич_01.png') }}" alt="Фотография">--}}
+{{--                        </div>--}}
+{{--                        <div class="price-container" style="align-items: start;">--}}
+{{--                            <div>--}}
+{{--                                <span style="color: var(--warmest-orange)">Доходность 30%</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div style="align-self: center; margin-top: 50px;">--}}
+{{--                <a class="warmest-btn" href="{{ route('site.catalog') }}" style="width: fit-content; text-decoration: none; cursor: pointer;">--}}
+{{--                    <span>Смотреть все</span>--}}
+{{--                    <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                        <path--}}
+{{--                            d="M0.585813 16.3903C0.46992 16.3903 0.356637 16.3541 0.260291 16.2865C0.163945 16.2189 0.088864 16.1228 0.0445423 16.0103C0.00022064 15.8979 -0.0113505 15.7742 0.0112925 15.6548C0.0339354 15.5355 0.0897751 15.4259 0.17175 15.3399L6.97995 8.19126L0.17175 1.04264C0.0650167 0.92661 0.00595739 0.771201 0.0072924 0.609888C0.00862741 0.448576 0.07025 0.294268 0.178888 0.180198C0.287525 0.0661286 0.434485 0.00142502 0.588116 2.32575e-05C0.741747 -0.0013785 0.889757 0.0606336 1.00027 0.172704L8.22292 7.75649C8.33277 7.87187 8.39448 8.02833 8.39448 8.19146C8.39448 8.3546 8.33277 8.51106 8.22292 8.62643L1.00027 16.2102C0.94583 16.2673 0.88121 16.3126 0.810097 16.3435C0.738985 16.3744 0.662772 16.3903 0.585813 16.3903Z"--}}
+{{--                            fill="white"/>--}}
+{{--                    </svg>--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    <div id="consult-block" class="main-page-block">--}}
+{{--        <a data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
+{{--            <div class="page-link-container">--}}
+{{--                <span>Оставить заявку на консультацию</span>--}}
+{{--                <div>--}}
+{{--                    <svg width="19" height="29" viewBox="0 0 19 29" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                        <path--}}
+{{--                            d="M1.32592 29C1.06361 29 0.807209 28.9361 0.589141 28.8164C0.371072 28.6967 0.201134 28.5267 0.100817 28.3277C0.000499394 28.1288 -0.0256906 27.9099 0.0255593 27.6988C0.0768092 27.4876 0.203196 27.2937 0.388738 27.1415L15.7984 14.4931L0.388738 1.84479C0.147158 1.63949 0.0134839 1.36452 0.0165056 1.0791C0.0195272 0.793684 0.159003 0.52066 0.404893 0.318832C0.650783 0.117004 0.983411 0.00252134 1.33114 4.11504e-05C1.67887 -0.00243904 2.01387 0.107282 2.26399 0.305571L18.6117 13.7239C18.8603 13.928 19 14.2048 19 14.4935C19 14.7821 18.8603 15.059 18.6117 15.2631L2.26399 28.6814C2.14078 28.7825 1.99452 28.8626 1.83357 28.9173C1.67261 28.972 1.50011 29.0001 1.32592 29Z"--}}
+{{--                            fill="#472B0B"/>--}}
+{{--                    </svg>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </a>--}}
+{{--        <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"--}}
+{{--             aria-hidden="true">--}}
+{{--            <div class="modal-dialog modal-dialog-centered">--}}
+{{--                <div class="modal-content">--}}
+{{--                    <div class="modal-header">--}}
+{{--                        <h1 class="modal-title" style="color: var(--warmest-orange)" id="exampleModalLabel">Заполните--}}
+{{--                            форму и наш менеджер свяжется с вами:</h1>--}}
+{{--                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
+{{--                    </div>--}}
+{{--                    <div class="modal-body">--}}
+{{--                        <div>--}}
+{{--                            <div>--}}
+{{--                                <input type="text" placeholder="Ваше имя" class="form-control">--}}
+{{--                                <input type="text" placeholder="Телефон" class="form-control">--}}
+{{--                            </div>--}}
+{{--                            <textarea placeholder="Сообщение" class="form-control"></textarea>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="modal-footer">--}}
+{{--                        <div>--}}
+{{--                            <span>Нажимая кнопку “Отправить”, я даю согласие на обработку персональных данных.</span>--}}
+{{--                            <button type="button" class="warmest-btn">Отправить</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 @endsection

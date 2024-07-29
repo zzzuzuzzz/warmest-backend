@@ -31,6 +31,9 @@ export default class MortgageCalc {
     customAddEventListener(inputElement, valueElement) {
         inputElement.addEventListener('input', (event) => {
             valueElement.value = event.target.value
+            let mortgageInfo = this.getMortgageInfo()
+            this.monthlyPayment.innerText = isNaN(mortgageInfo.payment) ? 0 : Math.floor(mortgageInfo.payment)
+            this.overpayment.innerText = isNaN(mortgageInfo.subpayment) ? 0 : Math.floor(mortgageInfo.subpayment) 
         })
         valueElement.addEventListener('input', (event) => {
             if (isNaN(Number(event.target.value))) {

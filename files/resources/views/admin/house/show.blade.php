@@ -28,9 +28,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex p-3">
-                            <div class="mr-3">
-                                <a href="{{ route('house.edit', $house->id) }}" class="btn btn-primary">Редактировать</a>
-                            </div>
+{{--                            <div class="mr-3">--}}
+{{--                                <a href="{{ route('house.edit', $house->id) }}" class="btn btn-primary">Редактировать</a>--}}
+{{--                            </div>--}}
                             <form action="{{ route('house.delete', $house->id) }}" method="post" class="mr-3">
                                 @csrf
                                 @method('delete')
@@ -107,10 +107,10 @@
                                         </div>
                                         <div class="option-container">
                                             <table>
-                                                <tr>
-                                                    <td>Категория проекта: </td>
-                                                    <td>{{ $category->title }}</td>
-                                                </tr>
+{{--                                                <tr>--}}
+{{--                                                    <td>Категория проекта: </td>--}}
+{{--                                                    <td>{{ $category->title }}</td>--}}
+{{--                                                </tr>--}}
                                                 <tr>
                                                     <td>Статус проекта: </td>
                                                     <td>{{ $house->is_published ? 'Опубликован' : 'Не опубликован'}}</td>
