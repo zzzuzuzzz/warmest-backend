@@ -10,12 +10,14 @@ class EditController extends Controller
 {
     public function __invoke(AddService $addService) {
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
-
-
-        return view('admin.addService.edit', compact('addService', 'questions', 'passedTime','questionsForMsg'
+        return view('admin.addService.edit', compact('addService', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

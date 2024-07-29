@@ -73,6 +73,19 @@
                                                     <input type="text" name="params_width" class="form-control ml-2" placeholder="5.6">
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td>Антресоль</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <select name="mezzanine"
+                                                                data-placeholder="Выберете дополнительные услуги"
+                                                                style="width: 100%;">
+                                                            <option value="1" selected>Есть</option>
+                                                            <option value="0">Нет</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </div>
@@ -87,19 +100,19 @@
                                                     <tr>
                                                         <td>Основная цена</td>
                                                         <td>
-                                                            <input type="text" name="main_price" class="form-control ml-2" placeholder="5 500 000">
+                                                            <input type="number" name="main_price" class="form-control ml-2" placeholder="5500000">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>Цена с комуникациями</td>
                                                         <td>
-                                                            <input type="text" name="add_price" class="form-control ml-2" placeholder="7 750 000">
+                                                            <input type="number" name="add_price" class="form-control ml-2" placeholder="7750000">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>Кредит</td>
                                                         <td>
-                                                            <input type="text" name="credit_info" class="form-control ml-2" placeholder="От 20 000 ₽/м">
+                                                            <input type="number" name="credit_info" class="form-control ml-2" placeholder="20000">
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -113,10 +126,19 @@
                                     </div>
                                     <div class="product-options" style="font-weight: 300;">
                                         <div class="form-group">
-                                            <select name="category_id" class="form-control select2"
+                                            <select name="floor_category_id" class="form-control select2"
                                                     style="width: 100%;">
-                                                <option selected="selected" disabled>Выберете категорию дома</option>
-                                                @foreach($categories as $category)
+                                                <option selected="selected" disabled>Выберете категорию (этажность) дома</option>
+                                                @foreach($floorCategories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <select name="material_category_id" class="form-control select2"
+                                                    style="width: 100%;">
+                                                <option selected="selected" disabled>Выберете категорию (материал) дома</option>
+                                                @foreach($materialCategories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                 @endforeach
                                             </select>
@@ -143,9 +165,76 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <textarea id="summernote" class="form-control" rows="20" name="description">Кровля: профлист С21 (цвет по согласованию), снегозадержатели, включены в стоимость. Стропильная конструкция: из строганной доски 35х190 мм., шаг 58-59 см. Обрешетка: строганная доска 20х90 мм., шаг 30-40 см. (подрешетник монтируется через контр рейку из обрезной доски 40х40 мм). Вентиляционные шахты: 2 точки (с грибками на крыши). Чердачное помещение со стороны фронтонов устанавливаются вентиляционные решетки. Утепление крыши: плитный утеплитель 200 мм. Rockwool-лайт баттс скандик.
-                                </textarea>
+                                <textarea  class="form-control" rows="5" name="description">Кровля: профлист С21 (цвет по согласованию), снегозадержатели, включены в стоимость.</textarea>
                             </div>
+                        </div>
+                        <div class="option-container">
+                            <table>
+                                <tr>
+                                    <td>Артикул</td>
+                                    <td>
+                                        <input type="text" name="article" class="form-control ml-2" placeholder="123456НШК">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Отделка</td>
+                                    <td>
+                                        <div class="form-group">
+                                            <select name="finishing"
+                                                    data-placeholder="Выберете дополнительные услуги"
+                                                    style="width: 100%;">
+                                                    <option value="1">Есть</option>
+                                                    <option value="0">Нет</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Количество спален</td>
+                                    <td>
+                                        <input type="number" name="number_of_bedrooms" class="form-control ml-2" placeholder="4">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Электричество</td>
+                                    <td>
+                                        <div class="form-group">
+                                            <select name="electricity"
+                                                    data-placeholder="Выберете дополнительные услуги"
+                                                    style="width: 100%;">
+                                                <option value="1">Есть</option>
+                                                <option value="0">Нет</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Водоснабжение</td>
+                                    <td>
+                                        <div class="form-group">
+                                            <select name="water"
+                                                    data-placeholder="Выберете дополнительные услуги"
+                                                    style="width: 100%;">
+                                                <option value="1">Есть</option>
+                                                <option value="0">Нет</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Газоснабжение</td>
+                                    <td>
+                                        <div class="form-group">
+                                            <select name="gas"
+                                                    data-placeholder="Выберете дополнительные услуги"
+                                                    style="width: 100%;">
+                                                <option value="1">Есть</option>
+                                                <option value="0">Нет</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Добавить">

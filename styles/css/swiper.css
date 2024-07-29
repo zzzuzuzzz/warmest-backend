@@ -34,3 +34,32 @@
 .swiper-wrapper {
     align-items: center!important;
 }
+
+.my-swiper-container {
+    display: flex;
+    width: 100%;
+    padding: 10px 50px;
+  }
+
+  .my-swiper {
+    padding: 10px 50px;
+    background-color: #E2D5C6;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .swiper-slide-img-container {
+    overflow: hidden;
+    border-radius: 25px;
+    border: 2px solid var(--warmest-black);
+  }
+
+  @media screen and (max-width: 993px) {
+    .my-swiper-container {
+      padding: 10px;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+  }

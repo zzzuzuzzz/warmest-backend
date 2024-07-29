@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('theme');
             $table->string('question');
             $table->string('viewed')->default('false');
-            $table->string('answered')->default('false');
             $table->timestamp('create');
         });
     }

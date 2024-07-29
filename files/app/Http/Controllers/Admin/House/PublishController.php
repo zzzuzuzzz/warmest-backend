@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
 use App\Models\AddService;
 use App\Models\AddServiceHouse;
-use App\Models\Category;
+use App\Models\MaterialCategory;
 use App\Models\House;
 use App\Models\ImageHouse;
 
@@ -25,7 +25,7 @@ class PublishController extends Controller
             ]);
         }
 
-        $category = Category::find($house->category_id);
+        $category = MaterialCategory::find($house->category_id);
 
         $images = [];
         foreach (ImageHouse::where('house_id', $house->id)->get() as $img) {
@@ -37,13 +37,16 @@ class PublishController extends Controller
             $addServices[] = AddService::find($as->add_service_id);
         }
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
 
-
-        return view('admin.house.show', compact('house', 'category', 'images', 'addServices', 'questions', 'passedTime','questionsForMsg'
+        return view('admin.house.show', compact('house', 'category', 'images', 'addServices', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Вопрос - ответ</h1>
+                    <h1 class="m-0">Вопрос от пользователя</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -39,9 +39,9 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <div class="float-right">
-                            <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Ответить</button>
-                        </div>
+{{--                        <form action="{{ route('question.create', $question->id) }}" method="get" class="float-right">--}}
+{{--                            <button type="submit" class="btn btn-default"><i class="fas fa-share"></i> Ответить</button>--}}
+{{--                        </form>--}}
                         <form action="{{ route('question.delete', $question->id) }}" method="post">
                             @csrf
                             @method('delete')

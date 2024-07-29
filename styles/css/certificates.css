@@ -1,0 +1,21 @@
+.certificate-container,
+.certificate-img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.certificate-type-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.certificate-title {
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 50px;
+  font-size: var(--warmest-medium-font-size);
+  gap: 20px
+}

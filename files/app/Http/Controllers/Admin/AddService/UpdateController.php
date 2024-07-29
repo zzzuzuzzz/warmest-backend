@@ -13,12 +13,14 @@ class UpdateController extends Controller
         $date = $request->validated();
         $addService->update($date);
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
-
-
-        return view('admin.addService.show', compact('addService', 'questions', 'passedTime','questionsForMsg'
+        return view('admin.addService.show', compact('addService', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

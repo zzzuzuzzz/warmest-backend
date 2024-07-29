@@ -11,12 +11,15 @@ class ShowController extends Controller
     public function __invoke(Question $question) {
         Question::where('id', $question->id)->update(['viewed' => 'true']);
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
-        $questionsForPage = NotificationsForController::questionsAll();
+        $applicationsForMsg = NotificationsForController::applications();        $questionsForPage = NotificationsForController::questionsAll();
         foreach ($questionsForPage as $quest) {
             $quest->create = NotificationsForController::passedTimeForQuestion($quest->create);
         }
-        return view('admin.question.show', compact('questions', 'passedTime','questionsForMsg', 'questionsForPage', 'question'));
+        return view('admin.question.show', compact('questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication', 'questionsForPage', 'question'));
     }
 }

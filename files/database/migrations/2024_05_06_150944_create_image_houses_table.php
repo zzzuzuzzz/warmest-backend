@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('image_houses', function (Blueprint $table) {
             $table->id();
             $table->text('image');
-            $table->foreignId('house_id')->nullable()->index()->constrained('categories');
+            $table->foreignId('house_id')->nullable()->index()->constrained('houses');
         });
     }
 

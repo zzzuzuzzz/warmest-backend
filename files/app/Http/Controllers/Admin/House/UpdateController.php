@@ -6,51 +6,74 @@ use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddServices\UpdateRequest;
 use App\Models\AddService;
-use App\Models\Category;
+use App\Models\AddServiceHouse;
+use App\Models\MaterialCategory;
 use App\Models\House;
+use App\Models\ImageHouse;
 use Illuminate\Support\Facades\Storage;
 
 class UpdateController extends Controller
 {
     public function __invoke(UpdateRequest $request, House $house) {
-        dd($request);
         $date = $request->validated();
-        dd($date);
+        $houseId = $house->id;
 
-//        $date['preview_image'] = Storage::disk('public')->put('/images', $date['preview_image']);
-        Storage::makeDirectory('public/images/' . $date['finder_name']);
-        $names = ['image_one', 'image_two', 'image_three', 'image_four', 'image_facade_one', 'image_facade_two', 'image_facade_three', 'image_facade_four', 'image_plan_one', 'image_plan_two'];
-        foreach ($names as $name) {
-            if ($date[$name]) {
-                $date[$name] = Storage::disk('public')->put('/images/' . $date['finder_name'], $date[$name]);
-            }
+        if (isset($date['deleteImg'])) {
+            Storage::deleteDirectory('public/images/' . $date['title']);
+            Storage::makeDirectory('public/images/' . $house->title);
+            unset($date['deleteImg']);
         }
-//        $addServiceIds = $date['add_services_ids'];
-//        $addServiceList = '';
-//        foreach ($addServiceIds as $addServiceId) {
-//            $addServiceList = $addServiceList . $addServiceId . ';';
-//        }
-//        $date['add_services_ids'] = $addServiceList;
+
+        $directories = Storage::directories('public/images/');
+        $resultFindDir = in_array($date['title'], $directories);
+
+        if (isset($date['images'])) {
+            if (!$resultFindDir) {
+                Storage::makeDirectory('public/images/' . $date['title']);
+            }
+            ImageHouse::where('house_id', $houseId)->delete();
+            foreach ($date['images'] as $img) {
+                $imgPath = Storage::disk('public')->put('/images/' . $date['title'], $img);
+                ImageHouse::firstOrCreate([
+                    'image' => $imgPath,
+                    'house_id' => $houseId
+                ]);
+            }
+            unset($date['images']);
+        }
+
+        AddServiceHouse::where('house_id', $houseId)->delete();
+        foreach ($date['add_services_ids'] as $as) {
+            AddServiceHouse::firstOrCreate([
+                'add_service_id' => $as,
+                'house_id' => $houseId
+            ]);
+        }
+        unset($date['add_services_ids']);
+
         $house->update($date);
 
-        $category = Category::find($house->category_id);
-//        $addServicesList = [];
 
-//        if ($house->add_services_ids) {
-//            $array = explode(";", substr($house->add_services_ids, 0, -1));
-//            foreach ($array as $element) {
-//                $addServicesList[] = AddService::find($element)->title;
-//            }
-//        } else {
-//            $addServicesList = ['Дополнительные услуги не выбраны'];
-//        }
+        $category = MaterialCategory::find($house->category_id);
+        $images = [];
+        foreach (ImageHouse::where('house_id', $house->id)->get() as $img) {
+            $images[] = $img->image;
+        }
+        $addServices = [];
+        foreach (AddServiceHouse::where('house_id', $house->id)->get() as $as) {
+            $addServices[] = AddService::find($as->add_service_id);
+        }
+
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
-
-        return view('admin.house.show', compact('house', 'category', 'addServicesList', 'questions', 'passedTime','questionsForMsg'
+        return view('admin.house.show', compact('addServices', 'images', 'house', 'category', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

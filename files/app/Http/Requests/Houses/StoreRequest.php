@@ -27,17 +27,25 @@ class StoreRequest extends FormRequest
             'params_floors' => 'required|string',
             'params_length' => 'required|string',
             'params_width' => 'required|string',
+            'mezzanine' => 'nullable',
+            'main_price' => 'required|integer',
+            'add_price' => 'required|integer',
+            'credit_info' => 'required|integer',
 
             'description' => 'required|string',
 
-            'main_price' => 'required|string',
-            'add_price' => 'required|string',
-            'credit_info' => 'required|string',
+            'article' => 'required|string',
+            'finishing' => 'nullable',
+            'number_of_bedrooms' => 'required|integer',
+            'electricity' => 'nullable',
+            'water' => 'nullable',
+            'gas' => 'nullable',
 
             'images' => 'nullable',
 
             'is_published' => 'nullable',
-            'category_id' => 'nullable',
+            'floor_category_id' => 'required',
+            'material_category_id' => 'required',
             'add_services_ids' => 'nullable'
         ];
     }

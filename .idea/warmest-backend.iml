@@ -10,7 +10,9 @@
       <sourceFolder url="file://$MODULE_DIR$/files/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/files/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/files/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/files/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/files/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
@@ -236,6 +238,15 @@
       <excludeFolder url="file://$MODULE_DIR$/files/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/files/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/files/vendor/laravel/ui" />
+      <excludeFolder url="file://$MODULE_DIR$/files/vendor/amocrm/amocrm-api-library" />
+      <excludeFolder url="file://$MODULE_DIR$/files/vendor/amocrm/oauth2-amocrm" />
+      <excludeFolder url="file://$MODULE_DIR$/files/vendor/fig/http-message-util" />
+      <excludeFolder url="file://$MODULE_DIR$/files/vendor/lcobucci/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/files/vendor/lcobucci/jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/files/vendor/league/oauth2-client" />
+      <excludeFolder url="file://$MODULE_DIR$/files/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/files/vendor/stella-maris/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/files/vendor/symfony/dotenv" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

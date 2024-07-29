@@ -9,13 +9,16 @@ class IndexController extends Controller
 {
     public function __invoke() {
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
-        $questionsForPage = NotificationsForController::questionsAll();
+        $applicationsForMsg = NotificationsForController::applications();        $questionsForPage = NotificationsForController::questionsAll();
 
         foreach ($questionsForPage as $question) {
             $question->create = NotificationsForController::passedTimeForQuestion($question->create);
         }
-        return view('admin.question.index', compact('questions', 'passedTime','questionsForMsg', 'questionsForPage'));
+        return view('admin.question.index', compact('questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication', 'questionsForPage'));
     }
 }

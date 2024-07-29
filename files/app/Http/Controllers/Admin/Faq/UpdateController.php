@@ -13,13 +13,16 @@ class UpdateController extends Controller
         $date = $request->validated();
         $faq->update($date);
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
 
-
-        return view('admin.faq.show', compact('faq', 'questions', 'passedTime','questionsForMsg'
+        return view('admin.faq.show', compact('faq', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

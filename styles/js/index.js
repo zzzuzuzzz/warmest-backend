@@ -69,7 +69,7 @@ function initCards() {
 }
 
 function main() {
-    initCards()
+    // initCards()
     displayButtonLinkMobile(window.innerWidth);
     resizeBlocksWithImg(window.innerWidth);
     resizeNoneMobileBlocks(window.innerWidth);

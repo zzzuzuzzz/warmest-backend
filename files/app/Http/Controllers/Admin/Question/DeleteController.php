@@ -11,12 +11,15 @@ class DeleteController extends Controller
     public function __invoke(Question $question) {
         $question->delete();
         $passedTime = NotificationsForController::passedTime();
+        $passedTimeApplication = NotificationsForController::passedTimeApplication();
         $questions = NotificationsForController::questions();
+        $applications = NotificationsForController::applications();
+        $numberNotification = NotificationsForController::numberNotification();
         $questionsForMsg = NotificationsForController::questionsForMsg();
+        $applicationsForMsg = NotificationsForController::applications();
 
 
-
-        return redirect()->route('question.index', compact('questions', 'passedTime','questionsForMsg'
+        return redirect()->route('question.index', compact('questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
 ));
     }
 }

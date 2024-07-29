@@ -223,7 +223,7 @@ class ModalWindow {
         title.appendChild(titleBlock)
         let charactersInfo = document.createElement('div')
         let paragraph = document.createElement('p')
-        paragraph.innerText = this.description
+        paragraph.innerHTML = this.description
         charactersInfo.appendChild(paragraph)
         characters.appendChild(title)
         characters.appendChild(charactersInfo)

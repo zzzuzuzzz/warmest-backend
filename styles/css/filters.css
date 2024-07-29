@@ -1,0 +1,125 @@
+.our-products-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .filter-construct {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    gap: 50px;
+    font-size: var(--warmest-medium-font-size);
+  }
+
+  .filter-construct-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    text-align: left;
+    background-color: var(--warmest-white-orange);
+  }
+
+  .filter-construct-text-input-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .filter-construct-inputs-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 5px;
+    gap: 5px;
+    align-items: center;
+  }
+
+  .filters-containers {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .filter-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .filter-title span {
+    font-size: var(--warmest-medium-font-size);
+    font-weight: var(--warmest-xbig-font-weight);
+  }
+
+  .filter-title-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10%;
+    border-radius: 10px;
+    position: relative;
+    background-color: var(--warmest-white-orange);
+  }
+
+  .filter-construct-text-input-container {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .filter-line {
+    width: 100%;
+    padding: 0px;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .filter-line path {
+    width: 100%;
+  }
+
+  .form-checkbox-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .filter-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 50px;
+  }
+
+  .filter-actions button{
+    font-size: var(--warmest-medium-font-size);
+  }
+
+  @media screen and (max-width: 1300px) {
+    .filter-construct {
+      font-size: var(--warmest-small-font-size);
+    }
+  }
+
+  @media screen and (max-width: 993px) {
+    .filter-construct {
+      flex-direction: column;
+      padding: 50px 10px;
+    }
+    .filter-actions {
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .filter-actions button {
+      width: 100% !important;
+      font-size: var(--warmest-small-font-size);
+    }
+  }

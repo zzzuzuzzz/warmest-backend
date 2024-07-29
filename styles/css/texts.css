@@ -1,5 +1,8 @@
 :root {
+    --warmest-xxbig-font-weight: 800;
+    --warmest-xbig-font-weight: 600;
     --warmest-big-font-weight: 500;
+    --warmest-small-font-weight: 400;
     --warmest-xxlarge-font-size: 256px;
     --warmest-xlarge-font-size: 64px;
     --warmest-large-font-size: 48px;
@@ -8,18 +11,33 @@
     --warmest-small-font-size: 16px;
 }
 
+.title {
+    display: flex;
+    width: max-content;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    font-size: var(--warmest-large-font-size);
+    font-weight: var(--warmest-big-font-weight);
+}
+
+.text-small {
+    color: #8E8E8E;
+    font-size: var(--warmest-small-font-size);
+    font-weight: var(--warmest-small-font-weight);
+}
+
 @media screen and (max-width: 1400px) {
     :root {
         --warmest-xxlarge-font-size: 200px;
     }
-   
 }
 
 @media screen and (max-width: 1200px) {
     :root {
         --warmest-xxlarge-font-size: 128px;
     }
-   
 }
 
 @media screen and (max-width: 991px) {
@@ -31,5 +49,4 @@
         --warmest-medium-font-size: 16px;
         --warmest-small-font-size: 14px;
     }
-   
 }

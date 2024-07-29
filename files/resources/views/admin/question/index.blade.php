@@ -46,31 +46,20 @@
                         <table class="table table-hover table-striped">
                             <tbody>
                             <tr>
-{{--                                <th>--}}
-{{--                                    <button type="button" class="btn btn-default btn-sm">--}}
-{{--                                        <i class="far fa-trash-alt"></i>--}}
-{{--                                    </button>--}}
-{{--                                </th>--}}
                                 <th>Имя отправителя</th>
                                 <th>Тема вопроса</th>
                                 <th>Вопрос</th>
                             </tr>
                             @foreach($questionsForPage as $question)
-                                <tr style="
+                                    <tr style="
                                     @if($question->viewed == 'false')
-                                        background-color: rgba(255,0,0,0.19)
+                                        background-color: rgba(255,0,0,0.19);
                                     @endif
-                                ">
-{{--                                    <td>--}}
-{{--                                        <div class="icheck-primary">--}}
-{{--                                            <input type="checkbox" value="" id="check1">--}}
-{{--                                            <label for="check1"></label>--}}
-{{--                                        </div>--}}
-{{--                                    </td>--}}
-                                    <td class="mailbox-name"><a href="{{ route('question.show', $question->id) }}">{{ $question->name }}</a></td>
-                                    <td class="mailbox-name">{{ $question->theme }}</td>
-                                    <td class="mailbox-subject">{{ $question->question }}</td>
-                                </tr>
+                                    ">
+                                        <td class="mailbox-name"><a href="{{ route('question.show', $question->id) }}">{{ $question->name }}</a></td>
+                                        <td class="mailbox-name">{{ $question->theme }}</td>
+                                        <td class="mailbox-subject">{{ $question->question }}</td>
+                                    </tr>
                             @endforeach
                             </tbody>
                         </table>
