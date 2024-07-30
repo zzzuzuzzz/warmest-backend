@@ -83,18 +83,11 @@
                         <span>Дополнительные опции</span>
                     </div>
                     <div class="product-options" style="font-weight: 300;">
-                        <div class="option-container">
-                            Септик на 5 человек с подключением к дому — 183 000 ₽
-                        </div>
-                        <div class="option-container">
-                            <span>Скважина с кессоном (до 50 метров глубиной) — 395 000 ₽</span>
-                        </div>
-                        <div class="option-container">
-                            <span>Навес для автомобиля — от 200 000 ₽</span>
-                        </div>
-                        <div class="option-container">
-                            Терраса — 16 000 ₽/м²
-                        </div>
+                        @foreach($addServices as $addService)
+                            <div class="option-container">
+                                {{ $addService->title }} — {{ $addService->price }}₽
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

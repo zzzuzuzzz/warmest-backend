@@ -10,12 +10,17 @@ use App\Models\FloorCategory;
 use App\Models\MaterialCategory;
 use App\Models\House;
 use App\Models\ImageHouse;
+use Illuminate\Support\Facades\DB;
 
 class ObjectController extends Controller
 {
     public function __invoke(House $object) {
 //        dd($object);
-//        $addServices = AddService::all();
+        $addServiceHouses = AddServiceHouse::where('house_id', $object->id)->get();
+        $addServices = [];
+        foreach ($addServiceHouses as $add) {
+            $addServices[] = AddService::find($add->add_service_id);
+        }
 //        $floorCategories = FloorCategory::all();
 //        $materialCategories = MaterialCategory::all();
 
@@ -67,6 +72,6 @@ class ObjectController extends Controller
         $object->credit = number_format(num: $object->credit, thousands_separator: ' ');
 
 //        dd($object);
-        return view('site.object', compact('object'));
+        return view('site.object', compact('object', 'addServices'));
     }
 }

@@ -29,14 +29,14 @@
                     @csrf
                     @method('post')
                     <div class="modal-body">
-                        <div class="modal-info-container" style="flex-direction: row;">
-                            <div style="display: grid; width: 60vw">
-                                <div class="custom-file">
-                                    <input name="images[]" multiple type="file" class="custom-file-input"
-                                           id="exampleInputFile">
-                                    <label class="custom-file-label" for="exampleInputFile">Выберете одну или несколько фотографий проекта</label>
-                                    <div class="previewBlock mt-2"></div>
-                                </div>
+                        <div class="modal-info-container d-flex" style="flex-direction: row; justify-content: space-between">
+                            <div class="warmest-product-imgs" style="width: 50vw">
+                                    <div class="custom-file">
+                                        <input name="images[]" multiple type="file" class="custom-file-input"
+                                               id="exampleInputFile">
+                                        <label class="custom-file-label" for="exampleInputFile">Выберете одну или несколько фотографий проекта</label>
+                                        <div class="previewBlock mt-2"></div>
+                                    </div>
                             </div>
                             <div class="product-info-block">
                                 <div class="product-params" style="gap: 0">
